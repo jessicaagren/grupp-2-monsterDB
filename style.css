@@ -6,6 +6,7 @@
 
 /* body > *, article, form {
     border: 2px solid blue;
+    margin: 5px;
 } */
 
 main {
@@ -31,6 +32,9 @@ header {
 aside {
     grid-area: aside;
     background-color: #F5F5F5;
+    /* Nedan två rader tillagt av J */
+    display: flex;
+    flex-wrap: wrap;
     
     article {
         display: flex;
@@ -38,6 +42,8 @@ aside {
         padding: 20px;
         border-bottom: 2px solid gray;
         justify-content: space-around;
+        /* Nedan rad tillagd av J */
+        width: 100%;
 
         li {
             list-style: none;
@@ -48,6 +54,10 @@ aside {
         padding: 20px;
         background-color: antiquewhite;
         margin: 20px;
+        /* Nedan tre rader tillagt av J */
+        /* align-self: stretch; */
+        width: 100%;
+        height: 65%;
 
         fieldset {
             border: none;
@@ -68,4 +78,8 @@ section {
 footer {
     grid-area: footer;
     background-color: lightcoral;
+    /* Nedan tre rader tillagt av J */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
