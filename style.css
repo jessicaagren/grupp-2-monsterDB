@@ -63,9 +63,21 @@ header {
 
 
 section {
+    display: flexbox;
+    flex-wrap: wrap;
     grid-area: section;
     background-color: #D9D9D9;
     padding: 20px;
+}
+
+.monstercard {
+    background-color: blueviolet;
+    border: solid black ;
+    width: fit-content;
+    padding: 3px;
+    li{
+        list-style: none;
+    }
 }
 
 footer {
