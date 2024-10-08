@@ -9,4 +9,4 @@ En app för att lägga till monster med typ, färg och utseende. Öppna html-fil
 - [Jessica](https://github.com/jessicaagren)
 
 
-![Ikon](media/git-med-mellanrum.webp)
+![Ikon](https://raw.githubusercontent.com/jessicaagren/grupp-2-monsterDB/refs/heads/main/Media/git-med-mellanrum.webp)
