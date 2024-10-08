@@ -44,8 +44,8 @@ for (const el of monsterColours) {
     labelForColors.textContent = el; // label texten blir färgnamen
     labelForColors.innerHTML = el;
 
-    labelElement.appendChild(labelForColors);
     labelElement.appendChild(colourOptions);
+    labelElement.appendChild(labelForColors);
 };
 
 
@@ -53,7 +53,7 @@ for (const el of monsterColours) {
 // hämta formulär
 const registerMonsterForm = document.querySelector('#monster-form');
 // hämta section
-const monsterCardSection = document.querySelector('#main-section');
+const allMonsterCards = document.querySelector('article');
 
 registerMonsterForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -76,14 +76,17 @@ const newMonster = {
 // pusha monsterobjekt till array allMonsters
 allMonsters.push(newMonster);
 
+//skapa monsterkort på sidan
 const monsterCard = document.createElement('section');
+monsterCard.classList.add('monster-card');
+monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
+allMonsterCards.appendChild(monsterCard);
 
+registerMonsterForm.reset();
 
-
-form.reset();
+console.log(newMonster);
+console.log(allMonsters);
 
 });
 
 
-console.log(newMonster);
-console.log(allMonsters);

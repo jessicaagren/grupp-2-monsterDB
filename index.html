@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
+	<head>
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Monsterdatabasen</title>
 		<link rel="stylesheet" href="style.css" />
@@ -9,56 +9,64 @@
 	</head>
 	<body>
 		<main>
-		<header>
-			<h1>Monsterdatabasen</h1>
-		</header>
-		<article>
-			DEMO: Här syns monster
-			<div class="monstercard">
-				<ul>
-					<h4>Demo</h4>
-					<li>type: "Ice"</li>
-					<li>colour: "blue"</li>
-					<li>heads: 1</li>
-					<li>tails: 0</li>
-					<li>arms: 4</li>
-					<li>horns: 2</li>
-				</ul>
-			</div>
-		</article>
+			<header>
+				<h1>Monsterdatabasen</h1>
+			</header>
+			<article>
+				DEMO: Här syns monster
+				<div class="monstercard">
+					<ul>
+						<h4>Demo</h4>
+						<li>type: "Ice"</li>
+						<li>colour: "blue"</li>
+						<li>heads: 1</li>
+						<li>tails: 0</li>
+						<li>arms: 4</li>
+						<li>horns: 2</li>
+					</ul>
+				</div>
+			</article>
 			<aside>
-					<ul><h2>Totalt antal</h2>
-						<li>Blåa monster: </li>
-						<li>Rosa monster: </li>
-						<li>Gröna monster:</li>
-						<li>Gula monster: </li>
-						<li>Röda monster: </li>
-					</ul>
-					
-					<ul><h2>Totalt antal</h2>
-						<li>Ismonster: </li>
-						<li>Eldmonster: </li>
-						<li>Blixtmonster: </li>
-					</ul>
+				<ul>
+					<h2>Totalt antal</h2>
+					<li>Blåa monster:</li>
+					<li>Rosa monster:</li>
+					<li>Gröna monster:</li>
+					<li>Gula monster:</li>
+					<li>Röda monster:</li>
+				</ul>
+
+				<ul>
+					<h2>Totalt antal</h2>
+					<li>Ismonster:</li>
+					<li>Eldmonster:</li>
+					<li>Blixtmonster:</li>
+				</ul>
 			</aside>
-			<form action="">
+			<form action="" id="monster-form">
 				<h2>Lägg till monster</h2>
-					<label for="monster-name">
-						<h3>Namn: </h3>
-						<input type="text" name="monster-name" id="monster-name"></label>
+				<label for="monster-name">
+					<h3>Namn:</h3>
+					<input
+						type="text"
+						name="monster-name"
+						id="monster-name"
+						placeholder="Vad heter ditt monster?"
+				/></label>
 
-					<label for="monster-type">
-						<h3>Typ: </h3>
-						<select name="monster-type" id="monster-type">
+				<label for="monster-type">
+					<h3>Typ:</h3>
+					<select name="monster-type" id="monster-type">
+						<option disabled selected value>Välj en monstertyp</option>
+					</select></label
+				>
 
-						</select></label>
-
-					<label for="monster-colour"  name="monster-colour" id="monster-colour">
-							<h3>Färg: </h3>
-						</label>
-					<button type="submit">Lägg till</button>
+				<label for="monster-colour" name="monster-colour" id="monster-colour">
+					<h3>Färg:</h3>
+				</label>
+				<button type="submit">Lägg till</button>
 			</form>
-		<footer>Mats, Siri, Sylwia och Jessica</footer>
+			<footer>Mats, Siri, Sylwia och Jessica</footer>
 		</main>
 	</body>
 </html>
