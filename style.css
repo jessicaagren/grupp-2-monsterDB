@@ -80,20 +80,25 @@ article {
     display: flexbox;
     flex-wrap: wrap;
     background-color: #D9D9D9;
-    padding: 20px;
     border-left: var(--border);
+    padding: 20px;
+    
+    .monster-card {
+        background-color: #F5F5F5;
+        border: var(--border);
+        width: fit-content;
+        padding: 0px;
 
-}
+        h3 {
+            background-color: var(--green);
+        }
 
-.monstercard {
-    background-color: blueviolet;
-    border: solid black ;
-    width: fit-content;
-    padding: 3px;
-    li{
-        list-style: none;
+        p {
+            background-color: pink;
+        }
     }
 }
+
 
 footer {
     grid-area: footer;
