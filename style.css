@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+:root {
+    --border: 2px solid gray;
+    /* Förslag på färger nedan (endast exempel) */
+    --blue: #4769ff;
+    --pink: #ff70ae;
+    --green: #66b77d;
+    --yellow: #f5f100;
+    --red: #e93820;
+  }
+
 /* body > *, article, form {
     border: 2px solid blue;
     margin: 5px;
@@ -28,7 +38,7 @@ header {
     justify-content: center;
     background-color:lightcoral;
     padding: 20px;
-    border-bottom: 1px solid gray;
+    border-bottom: var(--border);
 }
     
 article {
@@ -36,12 +46,17 @@ article {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    justify-content: space-around;
-    border-bottom: 1px solid gray;
-
+    justify-content: space-between;
+    
+    border-bottom: var(--border);
+    
     li {
         list-style: none;
     }
+    /* // Olika färg varannan rad i lista */
+    li:nth-child(even) {
+        background-color: #F5F5F5;
+      }
 }
 
 form {
@@ -66,7 +81,7 @@ section {
     grid-area: section;
     background-color: #D9D9D9;
     padding: 20px;
-    border-left: 1px solid gray;
+    border-left: var(--border);
 
 }
 
@@ -86,11 +101,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid gray;
+    border-top: var(--border);
 
 }
-
-/* // Olika färg varannan rad i lista */
-li:nth-child(even) {
-    background-color: #F5F5F5;
-  }
