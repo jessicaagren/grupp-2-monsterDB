@@ -7,6 +7,12 @@
 
 :root {
     --border: 2px solid gray;
+    /* Förslag på färger nedan (endast exempel) */
+    --blue: #4769ff;
+    --pink: #ff70ae;
+    --green: #66b77d;
+    --yellow: #f5f100;
+    --red: #e93820;
   }
 
 /* body > *, article, form {
@@ -41,12 +47,16 @@ article {
     flex-wrap: wrap;
     padding: 20px;
     justify-content: space-between;
-
+    
     border-bottom: var(--border);
-
+    
     li {
         list-style: none;
     }
+    /* // Olika färg varannan rad i lista */
+    li:nth-child(even) {
+        background-color: #F5F5F5;
+      }
 }
 
 form {
@@ -94,8 +104,3 @@ footer {
     border-top: var(--border);
 
 }
-
-/* // Olika färg varannan rad i lista */
-li:nth-child(even) {
-    background-color: #F5F5F5;
-  }
