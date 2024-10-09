@@ -37,19 +37,19 @@ for (const el of monsterColours) {
 };
 
 // hämta formulär
-const registerMonsterForm = document.querySelector('#monster-form');
+const registerMonsterForm = document.querySelector("#monster-form");
 
 // hämta knapp
-const submitButton = document.querySelector('#submit');
+// const submitButton = document.querySelector('#submit');
 
 // hämta section
-const allMonsterCards = document.querySelector('article');
+const allMonsterCards = document.querySelector("article");
 
-submitButton.addEventListener('click', function(event) {
-    event.preventDefault();
+registerMonsterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-const monsterName = document.querySelector('#monster-name').value;
-const monsterType = document.querySelector('#monster-type').value;
+const monsterName = document.querySelector("#monster-name").value;
+const monsterType = document.querySelector("#monster-type").value;
 const monsterColour = document.querySelector('input[name="colour"]:checked').value;
 
 // skapa monsterobjekt från formulär
@@ -67,8 +67,8 @@ const newMonster = {
 allMonsters.push(newMonster);
 
 //skapa monsterkort på sidan
-const monsterCard = document.createElement('section');
-monsterCard.classList.add('monster-card');
+const monsterCard = document.createElement("section");
+monsterCard.classList.add("monster-card");
 monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
 allMonsterCards.appendChild(monsterCard);
 
