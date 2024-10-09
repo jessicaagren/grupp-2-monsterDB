@@ -4,15 +4,15 @@ const allMonsters = [];
 
 
 // Array med typerna
-const types = ["Ismonster", "Eldmonster", "Blixtmonster"];
+const monsterTypes = ["Ismonster", "Eldmonster", "Blixtmonster"];
 
 const typeSelect = document.querySelector("#monster-type");
 
-for (const type of types) {
-    const typeOption = document.createElement("option");
-    typeOption.innerHTML = type;
-    typeOption.value = type;
-    typeSelect.appendChild(typeOption);
+for (const el of monsterTypes) {
+    const typeOptions = document.createElement("option");
+    typeOptions.innerHTML = el;
+    typeOptions.value = el;
+    typeSelect.appendChild(typeOptions);
 }
 
 // array med färgerna
