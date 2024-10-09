@@ -1,8 +1,6 @@
 // En array där alla monsterobjekt ska landa
 const allMonsters = [];
 
-
-
 // Array med typerna
 const monsterTypes = ["Ismonster", "Eldmonster", "Blixtmonster"];
 
@@ -38,14 +36,16 @@ for (const el of monsterColours) {
     labelElement.appendChild(labelForColors);
 };
 
-
-
 // hämta formulär
 const registerMonsterForm = document.querySelector('#monster-form');
+
+// hämta knapp
+const submitButton = document.querySelector('#submit');
+
 // hämta section
 const allMonsterCards = document.querySelector('article');
 
-registerMonsterForm.addEventListener('submit', function(event) {
+submitButton.addEventListener('click', function(event) {
     event.preventDefault();
 
 const monsterName = document.querySelector('#monster-name').value;
