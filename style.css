@@ -115,7 +115,7 @@ form {
 
 article {
     grid-area: article;
-    display: flexbox;
+    display: flex;
     flex-wrap: wrap;
     background-color: var(--gray);
     border-left: var(--border);
@@ -147,3 +147,40 @@ footer {
     border-top: var(--border);
 
 }
+
+
+@media (max-width: 600px) {
+    main {
+        display: grid;
+        min-height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr 8fr 1fr 0.5fr;
+        grid-template-areas: 
+        "header"
+        "form"
+        "article"
+        "aside"
+        "footer";
+    }
+    header {
+        border-bottom: var(--border);
+    }
+    article {
+        border-top: var(--border);
+        border-bottom: var(--border);
+        border-left: 0;
+    }
+    .monster-card {
+        display: flex;
+        max-height: 2rem;
+        p {
+            display: none;
+        }
+    aside {
+        border: 0;
+    }
+    }
+    footer {
+        border-top: var(--border);
+    }
+  }
