@@ -8,39 +8,46 @@
 		<script src="app.js" defer></script>
 	</head>
 	<body>
+		<header>
+			<h1>Monsterdatabasen</h1>
+		</header>
 		<main>
-			<header>
-				<h1>Monsterdatabasen</h1>
-			</header>
-			<article>
-				DEMO: Här syns monster
-				<section class="monster-card">
-					<h3>Demo-kort</h3>
-						<p>Type: Ice</p>
-						<p>Colour: Blue</p>
-						<p>Heads: 1</p>
-						<p>Tails: 0</p>
-						<p>Arms: 4</p>
-						<p>Horns: 2</p>
-				</section>
-			</article>
-			<aside>
-				<ul>
-					<h2>Totalt antal</h2>
-					<li>Blåa monster:</li>
-					<li>Rosa monster:</li>
-					<li>Gröna monster:</li>
-					<li>Gula monster:</li>
-					<li>Röda monster:</li>
-				</ul>
-
-				<ul>
-					<h2>Totalt antal</h2>
-					<li>Ismonster:</li>
-					<li>Eldmonster:</li>
-					<li>Blixtmonster:</li>
-				</ul>
-			</aside>
+				<!-- DEMO: Här syns monster -->
+			<section class="monster-card-blue">
+				<h3>Demo-kort</h3>
+				<p>Type: Ice</p>
+				<p>Colour: Blue</p>
+				<p>Heads: 1</p>
+				<p>Tails: 0</p>
+				<p>Arms: 4</p>
+				<p>Horns: 2</p>
+			</section>
+			<section class="monster-card-green">
+				<h3>Demo-kort</h3>
+				<p>Type: Ice</p>
+				<p>Colour: Blue</p>
+				<p>Heads: 1</p>
+				<p>Tails: 0</p>
+				<p>Arms: 4</p>
+				<p>Horns: 2</p>
+			</section>
+		</main>
+		<aside>
+			<ul>
+				<h2>Totalt antal</h2>
+				<li>Blåa monster:</li>
+				<li>Rosa monster:</li>
+				<li>Gröna monster:</li>
+				<li>Gula monster:</li>
+				<li>Röda monster:</li>
+			</ul>
+			<ul>
+				<h2>Totalt antal</h2>
+				<li>Ismonster:</li>
+				<li>Eldmonster:</li>
+				<li>Blixtmonster:</li>
+			</ul>
+		</aside>
 			<form action="" id="monster-form">
 				<h2>Lägg till monster</h2>
 				<label for="monster-name">
@@ -51,20 +58,21 @@
 						id="monster-name"
 						placeholder="Vad heter ditt monster?"
 				/></label>
-
 				<label for="monster-type">
 					<h3>Typ:</h3>
-					<select name="monster-type" id="monster-type">
+					<select 
+						name="monster-type" 
+						id="monster-type">
 						<option disabled selected value>Välj en monstertyp</option>
-					</select></label
-				>
-
-				<label for="monster-colour" name="monster-colour" id="monster-colour">
+					</select></label>
+				<label 
+					for="monster-colour" 
+					name="monster-colour" 
+					id="monster-colour">
 					<h3>Färg:</h3>
 				</label>
-				<button type="submit">Lägg till</button>
+				<button type="submit" id="submit">Lägg till</button>
 			</form>
-			<footer>Mats, Siri, Sylwia och Jessica</footer>
-		</main>
+		<footer>Mats, Siri, Sylwia och Jessica</footer>
 	</body>
 </html>
