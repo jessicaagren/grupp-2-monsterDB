@@ -20,6 +20,12 @@ const labelElement = document.querySelector('#monster-colour');
 
 // loopar igenom arrayen med färger och skapar radio input och korresponderande labels
 for (const el of monsterColours) {
+    // const wrapperToRadioAndLabel = document.createElement("div");
+    // wrapperToRadioAndLabel.value = el;
+    // wrapperToRadioAndLabel.innerHTML = el;
+    // wrapperToRadioAndLabel.classList = el;
+    // wrapperToRadioAndLabel.id = divForRadioAndLabel;
+
     const colourOptions = document.createElement("input");
     colourOptions.type = "radio"; // gör alla till radio buttons
     colourOptions.value = el; // ger unikt value som motsvarar färgnamnen
@@ -27,10 +33,14 @@ for (const el of monsterColours) {
     colourOptions.id = el; // ger unikt id med färgnamn
     colourOptions.innerHTML = el;
 
-    const labelForColours = document.createElement("label");
-    labelForColours.setAttribute("for", colourOptions.id); // länka label till inputens id
-    labelForColours.textContent = el; // label texten blir färgnamen
-    labelForColours.innerHTML = el;
+    const labelForColors = document.createElement("label");
+    labelForColors.setAttribute("for", colourOptions.id); // länka label till inputens id
+    labelForColors.textContent = el; // label texten blir färgnamen
+    labelForColors.innerHTML = el;
+    labelForColors.classList = el;
+
+    // labelElement.appendChild(wrapperToRadioAndLabel);
+
 
     labelElement.appendChild(colourOptions);
     labelElement.appendChild(labelForColours);

@@ -64,12 +64,51 @@ aside {
 
 form {
     grid-area: form;
-    padding: 20px;
-    background-color: antiquewhite;
+    /* padding: 20px; */
+    /* background-color: var(--gray); */
     margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+
+    #monster-name {
+        width: auto;
+    }
+    #monster-type {
+        width: auto;
+    }
+    
+    #monster-colour {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    label {
+        width: 50%;
+    }
+
+    .röd {
+        background-color: var(--red);
+    }
+    .rosa {
+        background-color: var(--pink);
+    }
+    .blå {
+        background-color: var(--blue);
+    }
+    .grön {
+        background-color: var(--green);
+    }
+    .gul {
+        background-color: var(--yellow);
+    }
     
     button {
     margin-top: 10px;
+    align-self: flex-end;
     }
 }
 
