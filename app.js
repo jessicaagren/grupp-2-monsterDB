@@ -1,17 +1,18 @@
 // ===== STATE =====
-// En array där alla monsterobjekt ska landa = State
 const allMonsters = [];
 
 // ===== CONFIG =====
-// Array med typerna = config
 const monsterTypes = ["Ismonster", "Eldmonster", "Blixtmonster"];
 const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
+const monsterAttributes = ["heads", "tails", "arms", "horns"];
+const attributesContainer = {};
 
 // ===== DOM HANDLES =====
 const typeSelect = document.querySelector("#monster-type");
-const labelElement = document.querySelector("#monster-colour");
+const colourSelect = document.querySelector("#monster-colour");
 const registerMonsterForm = document.querySelector("#monster-form");
 const allMonsterCards = document.querySelector("main");
+const monsterAttributeSpanElement = document.querySelector("#monster-attribute");
 
 // TODO: vad gör detta stycket kod?
 for (const el of monsterTypes) {
@@ -23,11 +24,9 @@ for (const el of monsterTypes) {
 
 // loopar igenom arrayen med färger och skapar radio input och korresponderande labels
 for (const el of monsterColours) {
-  // const wrapperToRadioAndLabel = document.createElement("div");
-  // wrapperToRadioAndLabel.value = el;
-  // wrapperToRadioAndLabel.innerHTML = el;
-  // wrapperToRadioAndLabel.classList = el;
-  // wrapperToRadioAndLabel.id = divForRadioAndLabel;
+
+  const inputLabelSpanElement = document.createElement("span");
+  colourSelect.appendChild(inputLabelSpanElement);
 
   const colourOptions = document.createElement("input");
   colourOptions.type = "radio"; // gör alla till radio buttons
@@ -42,10 +41,8 @@ for (const el of monsterColours) {
   labelForColours.innerHTML = el;
   labelForColours.classList = el;
 
-  // labelElement.appendChild(wrapperToRadioAndLabel);
-
-  labelElement.appendChild(colourOptions);
-  labelElement.appendChild(labelForColours);
+  inputLabelSpanElement.appendChild(colourOptions);
+  inputLabelSpanElement.appendChild(labelForColours);
 }
 
 // hämta knapp
@@ -65,10 +62,7 @@ registerMonsterForm.addEventListener("submit", (e) => {
     name: monsterName,
     type: monsterType,
     colour: monsterColour,
-    heads: "1",
-    tails: "0",
-    arms: "4",
-    horns: "2",
+    attributes: attributesContainer
   };
 
   // pusha monsterobjekt till array allMonsters
@@ -79,6 +73,7 @@ registerMonsterForm.addEventListener("submit", (e) => {
   monsterCard.classList.add("monster-card");
   monsterCard.classList.add(`${monsterColour}`);
   monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
+  
   allMonsterCards.appendChild(monsterCard);
 
   registerMonsterForm.reset();
@@ -88,8 +83,6 @@ registerMonsterForm.addEventListener("submit", (e) => {
   console.log(newMonster);
   console.log(allMonsters);
 });
-
-// ========================= Siris tilläg (metadata) ==========================
 
 // funktion som returnerar monster av en färg
 const filterByColour = (colour) => {
@@ -121,8 +114,30 @@ const renderMonsterData = () => {
     colourElement.innerText = amountOfColour(colour);
   });
 
-  types.forEach((type) => {
+  monsterTypes.forEach((type) => {
     const typeElement = document.getElementById(`antal-${type}`);
     typeElement.innerText = amountOfType(type);
   });
 };
+
+
+// ===================== teeest =====================
+
+
+
+
+monsterAttributes.forEach(attribute => {
+
+    const attributeInputElement = document.createElement('div');
+    attributeInputElement.innerHTML =  `
+    <label for=${attribute}>${attribute}: </label>
+    <input type="number" id="${attribute}" min="0" max ="10" placeholder="Enter ${attribute}">
+    `;
+
+    monsterAttributeSpanElement.appendChild(attributeInputElement);
+
+    attributesContainer[attribute] = document.querySelector(`#${attribute}`);
+
+    
+
+});
