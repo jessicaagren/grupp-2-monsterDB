@@ -118,14 +118,41 @@ aside {
 
 form {
     grid-area: form;
-    padding: var(--padding);
+    padding: 20px;
     background-color: antiquewhite;
-    margin: var(--padding);
+    margin: 20px;
     
     button {
     margin-top: 10px;
+    align-self: flex-end;
     }
 }
+
+
+article {
+    grid-area: article;
+    display: flexbox;
+    flex-wrap: wrap;
+    background-color: var(--gray);
+    border-left: var(--border);
+    padding: 20px;
+    
+    .monster-card {
+        background-color: var(--lightgray);
+        border: var(--border);
+        width: fit-content;
+        padding: 0px;
+
+        h3 {
+            background-color: var(--green);
+        }
+
+        p {
+            background-color: var(--lightgray);
+        }
+    }
+}
+
 
 footer {
     grid-area: footer;
@@ -135,3 +162,40 @@ footer {
     align-items: center;
     border-top: var(--border);
 }
+
+
+@media (max-width: 600px) {
+    main {
+        display: grid;
+        min-height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr 8fr 1fr 0.5fr;
+        grid-template-areas: 
+        "header"
+        "form"
+        "article"
+        "aside"
+        "footer";
+    }
+    header {
+        border-bottom: var(--border);
+    }
+    article {
+        border-top: var(--border);
+        border-bottom: var(--border);
+        border-left: 0;
+    }
+    .monster-card {
+        display: flex;
+        max-height: 2rem;
+        p {
+            display: none;
+        }
+    aside {
+        border: 0;
+    }
+    }
+    footer {
+        border-top: var(--border);
+    }
+  }
