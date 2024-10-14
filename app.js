@@ -4,7 +4,7 @@ const allMonsters = [];
 // ===== CONFIG =====
 const monsterTypes = ["Ismonster", "Eldmonster", "Blixtmonster"];
 const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
-const monsterAttributes = ["heads", "tails", "arms", "horns"];
+const monsterAttributes = ["huvuden", "tår", "armar", "horn"];
 const attributesContainer = {};
 
 // ===== DOM HANDLES =====
@@ -131,7 +131,7 @@ monsterAttributes.forEach(attribute => {
     const attributeInputElement = document.createElement('div');
     attributeInputElement.innerHTML =  `
     <label for=${attribute}>${attribute}: </label>
-    <input type="number" id="${attribute}" min="0" max ="10" placeholder="Enter ${attribute}">
+    <input type="number" id="${attribute}" min="0" max ="10" placeholder="Välj antal ${attribute}">
     `;
 
     monsterAttributeSpanElement.appendChild(attributeInputElement);
