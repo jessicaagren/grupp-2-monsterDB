@@ -77,29 +77,30 @@ main {
             border-bottom-right-radius: 5px;
         }
 
-    .monster-card.röd {
-        h3 {
-                background-color: var(--red);
-            }}
-    .monster-card.rosa {
-        h3 {
-                background-color: var(--pink);
-            }}
-    .monster-card.blå {
-        h3 {
-                background-color: var(--blue);
-            }}
-    .monster-card.grön {
-        h3 {
-                background-color: var(--green);
-            }}
-    .monster-card.gul {
-        h3 {
-                background-color: var(--yellow);
-            }}
     }
 }
 
+.monster-card.röd {
+    h3 {
+            background-color: var(--red);
+        }}
+.monster-card.rosa {
+    h3 {
+            background-color: var(--pink);
+        }}
+.monster-card.blå {
+    h3 {
+            background-color: var(--blue);
+        }}
+.monster-card.grön {
+    h3 {
+            background-color: var(--green);
+        }}
+.monster-card.gul {
+    h3 {
+            background-color: var(--yellow);
+        }}
+        
 aside {
     grid-area: aside;
     display: flex;
