@@ -11,7 +11,7 @@ const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
 const typeSelect = document.querySelector("#monster-type");
 const labelElement = document.querySelector("#monster-colour");
 const registerMonsterForm = document.querySelector("#monster-form");
-const allMonsterCards = document.querySelector("article");
+const allMonsterCards = document.querySelector("main");
 
 // TODO: vad gör detta stycket kod?
 for (const el of monsterTypes) {
@@ -36,11 +36,11 @@ for (const el of monsterColours) {
   colourOptions.id = el; // ger unikt id med färgnamn
   colourOptions.innerHTML = el;
 
-  const labelForColors = document.createElement("label");
-  labelForColors.setAttribute("for", colourOptions.id); // länka label till inputens id
-  labelForColors.textContent = el; // label texten blir färgnamen
-  labelForColors.innerHTML = el;
-  labelForColors.classList = el;
+  const labelForColours = document.createElement("label");
+  labelForColours.setAttribute("for", colourOptions.id); // länka label till inputens id
+  labelForColours.textContent = el; // label texten blir färgnamen
+  labelForColours.innerHTML = el;
+  labelForColours.classList = el;
 
   // labelElement.appendChild(wrapperToRadioAndLabel);
 
@@ -48,15 +48,8 @@ for (const el of monsterColours) {
   labelElement.appendChild(labelForColours);
 }
 
-// hämta formulär
-
-const registerMonsterForm = document.querySelector("#monster-form");
-
 // hämta knapp
 // const submitButton = document.querySelector('#submit');
-
-// hämta section
-const allMonsterCards = document.querySelector("article");
 
 registerMonsterForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -84,15 +77,13 @@ registerMonsterForm.addEventListener("submit", (e) => {
   //skapa monsterkort på sidan
   const monsterCard = document.createElement("section");
   monsterCard.classList.add("monster-card");
+  monsterCard.classList.add(`${monsterColour}`);
   monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
   allMonsterCards.appendChild(monsterCard);
 
   registerMonsterForm.reset();
 
   renderMonsterData();
-
-  console.log(newMonster);
-  console.log(allMonsters);
 
   console.log(newMonster);
   console.log(allMonsters);

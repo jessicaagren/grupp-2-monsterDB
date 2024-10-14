@@ -53,7 +53,7 @@ main {
     border-left: var(--border);
     padding: var(--padding);
     
-    .monster-card-blue {
+    .monster-card {
         background-color: var(--lightgray);
         border: 5px;
         border-style: solid;
@@ -73,28 +73,30 @@ main {
         
         p {
             background-color: var(--lightgray);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
-    }
 
-    .monster-card-green {
-        background-color: var(--lightgray);
-        /* border: 5px;
-        border-style: solid;
-        border-color: #9b70ff; */
-        padding: 0.2px;
-        border-radius: 10px;
-        box-sizing: border-box;
-        text-align: flex-start;
-         
+    .monster-card.röd {
         h3 {
-            background-color: var(--green);
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-        
-        p {
-            background-color: var(--lightgray);
-        }
+                background-color: var(--red);
+            }}
+    .monster-card.rosa {
+        h3 {
+                background-color: var(--pink);
+            }}
+    .monster-card.blå {
+        h3 {
+                background-color: var(--blue);
+            }}
+    .monster-card.grön {
+        h3 {
+                background-color: var(--green);
+            }}
+    .monster-card.gul {
+        h3 {
+                background-color: var(--yellow);
+            }}
     }
 }
 
@@ -118,19 +120,55 @@ aside {
 
 form {
     grid-area: form;
-    padding: 20px;
-    background-color: antiquewhite;
+    /* padding: 20px; */
+    /* background-color: var(--gray); */
     margin: 20px;
-    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+ 
+    #monster-name {
+        width: auto;
+    }
+    #monster-type {
+        width: auto;
+    }
+   
+    #monster-colour {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    label {
+        width: 50%;
+    }
+ 
+    #röd {
+        accent-color: var(--red);
+    }
+    #rosa {
+        accent-color: var(--pink);
+    }
+    #blå {
+        accent-color: var(--blue);
+    }
+    #grön {
+        accent-color: var(--green);
+    }
+    #gul {
+        accent-color: var(--yellow);
+    }
+   
     button {
     margin-top: 10px;
     align-self: flex-end;
     }
-}
-
-
-article {
-    grid-area: article;
+ }
+ 
+section {
+    grid-area: section;
     display: flexbox;
     flex-wrap: wrap;
     background-color: var(--gray);
@@ -153,7 +191,6 @@ article {
     }
 }
 
-
 footer {
     grid-area: footer;
     background-color: lightcoral;
@@ -162,7 +199,6 @@ footer {
     align-items: center;
     border-top: var(--border);
 }
-
 
 @media (max-width: 600px) {
     main {
