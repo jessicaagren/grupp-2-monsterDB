@@ -100,7 +100,7 @@ main {
     h3 {
             background-color: var(--yellow);
         }}
-        
+
 aside {
     grid-area: aside;
     display: flex;
@@ -132,6 +132,7 @@ form {
     #monster-name {
         width: auto;
     }
+
     #monster-type {
         width: auto;
     }
@@ -142,6 +143,7 @@ form {
         flex-direction: column;
         align-items: flex-start;
     }
+
     label {
         width: 50%;
     }
@@ -202,35 +204,56 @@ footer {
 }
 
 @media (max-width: 600px) {
-    main {
+    body {
         display: grid;
         min-height: 100vh;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3fr 8fr 1fr 0.5fr;
+        grid-template-rows: 1fr 3fr 5fr 3fr 1fr;
         grid-template-areas: 
         "header"
         "form"
-        "article"
+        "main"
         "aside"
         "footer";
     }
     header {
         border-bottom: var(--border);
     }
-    article {
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1.5fr 2.5fr 0.5fr;
+        grid-template-areas: 
+        "h2 h2"
+        "monsterName monsterType"
+        "monsterColour monsterAttributes"
+        "button button"
+        ;
+
+        h2 {
+            grid-area: h2;
+        }
+        button {
+            grid-column: 2;
+        }
+    }
+    main {
         border-top: var(--border);
         border-bottom: var(--border);
         border-left: 0;
     }
     .monster-card {
         display: flex;
-        max-height: 2rem;
+        height: fit-content;
+        width: fit-content;
         p {
             display: none;
         }
-    aside {
-        border: 0;
     }
+    aside {
+        p {
+            align-self: flex-end;
+        }
     }
     footer {
         border-top: var(--border);
