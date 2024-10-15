@@ -1,19 +1,3 @@
-// ===== STATE =====
-const allMonsters = [];
-
-// ===== CONFIG =====
-const monsterTypes = ["Ismonster", "Eldmonster", "Blixtmonster"];
-const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
-const monsterAttributes = ["huvuden", "tår", "armar", "horn"];
-const attributesContainer = {};
-
-// ===== DOM HANDLES =====
-const typeSelect = document.querySelector("#monster-type");
-const colourSelect = document.querySelector("#monster-colour");
-const registerMonsterForm = document.querySelector("#monster-form");
-const allMonsterCards = document.querySelector("main");
-const monsterAttributeSpanElement = document.querySelector("#monster-attribute");
-
 // TODO: vad gör detta stycket kod?
 for (const el of monsterTypes) {
   const typeOptions = document.createElement("option");
@@ -24,7 +8,6 @@ for (const el of monsterTypes) {
 
 // loopar igenom arrayen med färger och skapar radio input och korresponderande labels
 for (const el of monsterColours) {
-
   const inputLabelSpanElement = document.createElement("span");
   colourSelect.appendChild(inputLabelSpanElement);
 
@@ -62,7 +45,7 @@ registerMonsterForm.addEventListener("submit", (e) => {
     name: monsterName,
     type: monsterType,
     colour: monsterColour,
-    attributes: attributesContainer
+    attributes: attributesContainer,
   };
 
   // pusha monsterobjekt till array allMonsters
@@ -73,7 +56,7 @@ registerMonsterForm.addEventListener("submit", (e) => {
   monsterCard.classList.add("monster-card");
   monsterCard.classList.add(`${monsterColour}`);
   monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
-  
+
   allMonsterCards.appendChild(monsterCard);
 
   registerMonsterForm.reset();
@@ -120,24 +103,16 @@ const renderMonsterData = () => {
   });
 };
 
-
 // ===================== teeest =====================
 
-
-
-
-monsterAttributes.forEach(attribute => {
-
-    const attributeInputElement = document.createElement('div');
-    attributeInputElement.innerHTML =  `
+monsterAttributes.forEach((attribute) => {
+  const attributeInputElement = document.createElement("div");
+  attributeInputElement.innerHTML = `
     <label for=${attribute}>${attribute}: </label>
     <input type="number" id="${attribute}" min="0" max ="10" placeholder="Välj antal ${attribute}">
     `;
 
-    monsterAttributeSpanElement.appendChild(attributeInputElement);
+  monsterAttributeSpanElement.appendChild(attributeInputElement);
 
-    attributesContainer[attribute] = document.querySelector(`#${attribute}`);
-
-    
-
+  attributesContainer[attribute] = document.querySelector(`#${attribute}`);
 });
