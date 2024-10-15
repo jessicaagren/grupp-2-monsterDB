@@ -24,8 +24,9 @@
 			</section>
 		</main>
 		<aside>
+			<h2>Totalt antal monster: <span id="antal-totalt">0</span></h2>
 			<ul>
-				<h2>Totalt antal</h2>
+				<h3>Färger</h3>
 				<li>Blåa monster: <span id="antal-blå">0</span></li>
 				<li>Rosa monster: <span id="antal-rosa">0</span></li>
 				<li>Gröna monster: <span id="antal-grön">0</span></li>
@@ -33,12 +34,11 @@
 				<li>Röda monster: <span id="antal-röd">0</span></li>
 			</ul>
 			<ul>
-				<h2>Totalt antal</h2>
+				<h3>Typer</h3>
 				<li>Ismonster: <span id="antal-Ismonster">0</span></li>
 				<li>Eldmonster: <span id="antal-Eldmonster">0</span></li>
 				<li>Blixtmonster: <span id="antal-Blixtmonster">0</span></li>
 			</ul>
-			<p>Totalt antal monster: <span id="antal-totalt">0</span></p>
 		</aside>
 		<form action="" id="monster-form">
 			<h2>Registraturet</h2>
@@ -49,6 +49,7 @@
 					name="monster-name"
 					id="monster-name"
 					placeholder="Vad heter ditt monster?"
+					required
 			/></label>
 			<label for="monster-type">
 				<h3>Typ:</h3>
@@ -63,6 +64,7 @@
 				id="monster-colour">
 				<h3>Färg:</h3>
 			</label>
+			<h3>Utseende:</h3>
 			<span id="monster-attribute"></span>
 			<button type="submit" id="submit">Lägg till</button>
 		</form>
