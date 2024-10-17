@@ -8,7 +8,7 @@ const allMonsters = [
 ];
 
 // ===== CONFIG =====
-const monsterTypes = ["ismonster", "eldmonster", "blixtmonster", "prutt"];
+const monsterTypes = ["ismonster", "eldmonster", "blixtmonster"];
 const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
 const monsterAttributes = ["huvuden", "tår", "armar", "horn"];
 const attributesContainer = {};
