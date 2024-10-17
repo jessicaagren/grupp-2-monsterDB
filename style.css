@@ -43,30 +43,28 @@ header {
     padding: var(--padding);
     border-bottom: var(--border);
 }
- /* gör desigen på korten. 
- sedan kopiera demokortet för att se hur den beteer sig med flexen*/
+
 main {
     grid-area: main;
-    display: flexbox;
+    display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     background-color: var(--gray);
     border-left: var(--border);
     padding: var(--padding);
-    
+    gap: 10px;
+     
     .monster-card {
+        display: flex;
+        flex-direction: column;
         background-color: var(--lightgray);
-        border: 5px;
-        border-style: solid;
-        border-color: #9b70ff;
-        padding: 0.2px;
+        /* padding: 10px; */
         border-radius: 10px;
-        box-sizing: border-box;
-        text-align: flex-start;
-        max-width: 200px;
-        margin-bottom: 8px;
-         
+        min-width: 200px;
+        max-height: 150px;
+        text-indent: 10px;
+        
         h3 {
-            background-color: var(--blue);
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
@@ -75,31 +73,41 @@ main {
             background-color: var(--lightgray);
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
+            line-height: 2;
+            }
+            
         }
-
     }
-}
 
 .monster-card.röd {
     h3 {
-            background-color: var(--red);
-        }}
+        background-color: var(--red);
+    }
+}
+
 .monster-card.rosa {
     h3 {
-            background-color: var(--pink);
-        }}
+        background-color: var(--pink);
+    }
+}
+
 .monster-card.blå {
     h3 {
-            background-color: var(--blue);
-        }}
+        background-color: var(--blue);
+    }
+}
+
 .monster-card.grön {
     h3 {
-            background-color: var(--green);
-        }}
+        background-color: var(--green);
+    }
+}
+
 .monster-card.gul {
     h3 {
-            background-color: var(--yellow);
-        }}
+        background-color: var(--yellow);
+    }
+}
 
 aside {
     grid-area: aside;
@@ -113,6 +121,7 @@ aside {
     li {
         list-style: none;
     }
+
     /* // Olika färg varannan rad i lista */
     li:nth-child(even) {
         background-color: var(--lightgray);
@@ -170,29 +179,6 @@ form {
     }
  }
  
-section {
-    grid-area: section;
-    display: flexbox;
-    flex-wrap: wrap;
-    background-color: var(--gray);
-    border-left: var(--border);
-    padding: 20px;
-    
-    .monster-card {
-        background-color: var(--lightgray);
-        border: var(--border);
-        width: fit-content;
-        padding: 0px;
-
-        h3 {
-            background-color: var(--green);
-        }
-
-        p {
-            background-color: var(--lightgray);
-        }
-    }
-}
 
 footer {
     grid-area: footer;
@@ -216,9 +202,11 @@ footer {
         "aside"
         "footer";
     }
+
     header {
         border-bottom: var(--border);
     }
+
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -234,14 +222,13 @@ footer {
             grid-column: 2;
         }
     }
+
     main {
         border-top: var(--border);
         border-bottom: var(--border);
         border-left: 0;
     }
-    aside {
-        border: 0;
-    }
+
     .monster-card {
         display: flex;
         height: fit-content;
@@ -250,7 +237,9 @@ footer {
             display: none;
         }
     }
+
     aside {
+        border: 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 3fr;
@@ -260,6 +249,7 @@ footer {
             grid-area: h2;
         }
     }
+
     footer {
         border-top: var(--border);
     }
