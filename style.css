@@ -14,11 +14,11 @@
     --border: 2px solid gray;
     --padding: 20px;
     /* Förslag på färger nedan (endast exempel) */
-    --blue: #4769ff;
-    --pink: #ff70ae;
+    --blue: #5C7AFF;
+    --pink: #FF85BA;
     --green: #66b77d;
-    --yellow: #f5f100;
-    --red: #e93820;
+    --yellow: #FFD65C;
+    --red: #ee6958;
     --lightgray: #F5F5F5;
     --gray: #D9D9D9;
   }
@@ -39,7 +39,7 @@ header {
     grid-area: header;
     display: flex;
     justify-content: center;
-    background-color:lightcoral;
+    background-color:var(--red);
     padding: var(--padding);
     border-bottom: var(--border);
 }
@@ -222,7 +222,7 @@ form {
 
 footer {
     grid-area: footer;
-    background-color: lightcoral;
+    background-color: var(--red);
     display: flex;
     justify-content: center;
     align-items: center;

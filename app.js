@@ -6,12 +6,14 @@ const allMonsters = [
     { name: "4", type: "eldmonster", colour: "rosa", attributes: {} },
     { name: "5", type: "blixtmonster", colour: "gul", attributes: {} },
 ];
+const allAttributes = [];
+const temporaryAttributesContainer = {};
+let currentID = 1; // Ger varje monster ett unikt ID
 
 // ===== CONFIG =====
 const monsterTypes = ["ismonster", "eldmonster", "blixtmonster"];
 const monsterColours = ["röd", "rosa", "blå", "grön", "gul"];
-const monsterAttributes = ["huvuden", "tår", "armar", "horn"];
-const attributesContainer = {};
+const monsterAttributes = ["huvuden", "armar", "horn", "tår"];
 
 // ===== DOM HANDLES =====
 const typeSelect = document.querySelector("#monster-type");
@@ -20,13 +22,14 @@ const registerMonsterForm = document.querySelector("#monster-form");
 const allMonsterCards = document.querySelector("main");
 const monsterAttributeSpanElement = document.querySelector("#monster-attribute");
 
+// ===== FUNCTIONS =====
 // Funktion för att skriva stor bokstav i början
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // Funktion för att rendera monsterkort
-const renderMonsterCards = () => {
+const renderDemoMonsterCards = () => {
     allMonsters.forEach((monster) => {
       const monsterCard = document.createElement("section");
       monsterCard.classList.add("monster-card", monster.colour);
@@ -37,26 +40,26 @@ const renderMonsterCards = () => {
   };
   
 // Anropa renderMonsterCards för att skriva ut demokort
-renderMonsterCards();
+renderDemoMonsterCards();
 
 // Funktion för att skapa monsterkort
-const createMonsterCard = (monsterName, monsterType, monsterColour) => {
-    const monsterCard = document.createElement("section");
-    monsterCard.classList.add("monster-card", monsterColour);
-    monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
-    return monsterCard;
-  }
+// const createMonsterCard = (monsterName, monsterType, monsterColour) => {
+//     const monsterCard = document.createElement("section");
+//     monsterCard.classList.add("monster-card", monsterColour);
+//     monsterCard.innerHTML = `<h3>${monsterName}</h3><p>Typ: ${monsterType}</p><p>Färg: ${monsterColour}</p>`;
+//     return monsterCard;
+//   }
 
-  // Flyttat ut objektet och skapat funktion
-  const createMonster = (name, type, colour, attributes) => {
-    return {
-      name: name,
-      type: type,
-      colour: colour,
-      attributes: attributes,
-    };
-  };
-  
+// Flyttat ut objektet och skapat funktion
+// const createMonster = (name, type, colour, attributes) => {
+//     return {
+//         name: name,
+//         type: type,
+//         colour: colour,
+//         attributes: attributes,
+//     };
+// };
+
 // Funktion för att skapa options (domHandle = DOM handle, options = array med alternativ)
 const populateSelectOptions = (domHandle, options) => {
     options.forEach((option) => {
@@ -94,6 +97,13 @@ for (const el of monsterColours) {
 registerMonsterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     
+    // Skapar attributesobjekt från array
+    const newAttributes = { attributesID: currentID };
+    monsterAttributes.forEach(el => {
+        const inputValue = document.getElementById(el).value;
+        newAttributes[el] = inputValue;
+    });
+
     const monsterName = document.querySelector("#monster-name").value;
     const monsterType = document.querySelector("#monster-type").value;
     const monsterColour = document.querySelector(
@@ -101,20 +111,55 @@ registerMonsterForm.addEventListener("submit", (e) => {
     ).value;
 
     // Skapa monsterobjekt från formulär
-    const newMonster = createMonster(monsterName, monsterType, monsterColour, attributesContainer);
-    
+    const newMonster = {
+        name: monsterName,
+        type: monsterType,
+        colour: monsterColour,
+        monsterID: currentID,
+    };
+
     allMonsters.push(newMonster);
+    allAttributes.push(newAttributes);
+    
+    currentID++;
     
     // Skapa monsterkort på sidan
-    const monsterCard = createMonsterCard(monsterName, monsterType, monsterColour);
-    allMonsterCards.appendChild(monsterCard);
+    // const monsterCard = createMonsterCard(monsterName, monsterType, monsterColour);
+    // allMonsterCards.appendChild(monsterCard);
+    
+    const renderAttributes = (currentID) => {
+        const monsterAttributes = allAttributes[currentID];
+        let attributesAsString = "";
+        for (const key in monsterAttributes) {
+            attributesAsString += `<p>${key}: ${monsterAttributes[key]}</p>`;
+        }
+        return attributesAsString;
+    }
+
+    // Funktion för att rendera monsterkorten
+    const renderAllMonsterCards = (monsters) => {
+        allMonsterCards.innerHTML = "";
+        monsters.forEach(el => {
+            const monsterCard = document.createElement("section");
+            monsterCard.classList.add("monster-card", monsterColour);
+            monsterCard.innerHTML =
+            `<h3>${monsterName}</h3>
+            <p>Typ: ${monsterType}</p>
+            <p>Färg: ${monsterColour}</p>
+            ${renderAttributes(el.currentID)}`;
+            allMonsterCards.appendChild(monsterCard);
+        });
+    }
     
     registerMonsterForm.reset();
     renderMonsterData();
+    renderAllMonsterCards();
     
-    console.log(newMonster);
-    console.log(allMonsters);
+    // console.log(newMonster);
+    // console.log(allMonsters);
 });
+
+
 
 // funktion som returnerar monster av en färg
 const filterByColour = (colour) => {
@@ -157,13 +202,13 @@ const renderMonsterData = () => {
 monsterAttributes.forEach((attribute) => {
   const attributeInputElement = document.createElement("div");
   attributeInputElement.innerHTML = `
-    <label for=${attribute}>${attribute}: </label>
+    <label for=${attribute}>` + capitalizeFirstLetter(attribute) + `: </label>
     <input type="number" id="${attribute}" min="0" max ="10" placeholder="Välj antal ${attribute}">
     `;
 
   monsterAttributeSpanElement.appendChild(attributeInputElement);
 
-  attributesContainer[attribute] = document.querySelector(`#${attribute}`);
+  temporaryAttributesContainer[attribute] = document.querySelector(`#${attribute}`);
 });
 
 // ========= filter????? =========
