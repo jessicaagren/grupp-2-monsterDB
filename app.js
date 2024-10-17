@@ -84,7 +84,7 @@ for (const el of monsterColours) {
     const labelForColours = document.createElement("label");
     labelForColours.setAttribute("for", colourOptions.id); // länka label till inputens id
     labelForColours.textContent = el; // label texten blir färgnamen
-    labelForColours.innerHTML = el;
+    labelForColours.innerHTML = capitalizeFirstLetter(el);
     labelForColours.classList = el;
     
     inputLabelSpanElement.appendChild(colourOptions);

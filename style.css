@@ -239,6 +239,9 @@ footer {
         border-bottom: var(--border);
         border-left: 0;
     }
+    aside {
+        border: 0;
+    }
     .monster-card {
         display: flex;
         height: fit-content;
