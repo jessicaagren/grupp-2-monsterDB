@@ -53,7 +53,14 @@ main {
     border-left: var(--border);
     padding: var(--padding);
     gap: 10px;
-     
+    
+    article {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-content: flex-start; */
+    /* justify-items: space-evenly; */
+    gap: 20px;
+    
     .monster-card {
         display: flex;
         flex-direction: column;
@@ -77,6 +84,7 @@ main {
             }
             
         }
+    }
     }
 
 .monster-card.röd {
