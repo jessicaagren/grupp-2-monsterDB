@@ -95,69 +95,71 @@ for (const el of monsterColours) {
 }
 
 registerMonsterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    // Skapar attributesobjekt från array
-    const newAttributes = { attributesID: currentID };
-    monsterAttributes.forEach(el => {
-        const inputValue = document.getElementById(el).value;
-        newAttributes[el] = inputValue;
+    e.preventDefault(); // Förhindra sidladdning vid formulärinlämning
+
+    // === Skapa ett attribut-objekt från formuläret ===
+    const newAttributes = {};
+    monsterAttributes.forEach((attr) => {
+        const inputValue = document.getElementById(attr).value; // Hämta värde för varje attribut
+        newAttributes[attr] = inputValue || 0; // Om inget värde anges, sätt till 0
     });
 
-    const monsterName = document.querySelector("#monster-name").value;
-    const monsterType = document.querySelector("#monster-type").value;
-    const monsterColour = document.querySelector(
-      'input[name="colour"]:checked'
-    ).value;
+    // === Hämta värden från formuläret ===
+    const monsterName = document.querySelector("#monster-name").value; // Namn på monstret
+    const monsterType = document.querySelector("#monster-type").value; // Typ av monster
+    const monsterColour = document.querySelector('input[name="colour"]:checked').value; // Färg från vald radio-knapp
 
-    // Skapa monsterobjekt från formulär
+    // === Skapa ett nytt monsterobjekt med unikt ID ===
     const newMonster = {
-        name: monsterName,
-        type: monsterType,
-        colour: monsterColour,
-        monsterID: currentID,
+        id: currentID, // Tilldela ett unikt ID till monstret
+        name: monsterName, // Namn från formuläret
+        type: monsterType, // Typ från formuläret
+        colour: monsterColour, // Färg från radio-knapp
+        attributes: newAttributes, // Attribut från formuläret
     };
 
-    allMonsters.push(newMonster);
-    allAttributes.push(newAttributes);
-    
-    currentID++;
-    
-    // Skapa monsterkort på sidan
-    // const monsterCard = createMonsterCard(monsterName, monsterType, monsterColour);
-    // allMonsterCards.appendChild(monsterCard);
-    
-    const renderAttributes = (currentID) => {
-        const monsterAttributes = allAttributes[currentID];
-        let attributesAsString = "";
-        for (const key in monsterAttributes) {
-            attributesAsString += `<p>${key}: ${monsterAttributes[key]}</p>`;
-        }
-        return attributesAsString;
-    }
+    // === Uppdatera state med det nya monstret ===
+    allMonsters.push(newMonster); // Lägg till det nya monstret i listan
+    currentID++; // Öka ID:t så att nästa monster får ett nytt unikt ID
 
-    // Funktion för att rendera monsterkorten
-    const renderAllMonsterCards = (monsters) => {
-        allMonsterCards.innerHTML = "";
-        monsters.forEach(el => {
-            const monsterCard = document.createElement("section");
-            monsterCard.classList.add("monster-card", monsterColour);
-            monsterCard.innerHTML =
-            `<h3>${monsterName}</h3>
-            <p>Typ: ${monsterType}</p>
-            <p>Färg: ${monsterColour}</p>
-            ${renderAttributes(el.currentID)}`;
-            allMonsterCards.appendChild(monsterCard);
-        });
-    }
-    
-    registerMonsterForm.reset();
-    renderMonsterData();
-    renderAllMonsterCards();
-    
-    // console.log(newMonster);
-    // console.log(allMonsters);
+    // === Rendera om monsterkorten och metadata ===
+    renderAllMonsterCards(allMonsters); // Visa alla monsterkort igen
+    registerMonsterForm.reset(); // Återställ formuläret till sitt ursprungsläge
+    renderMonsterData(); // Uppdatera metadata för alla monster
 });
+
+// === Funktion för att rendera alla monsterkort ===
+const renderAllMonsterCards = (monsters) => {
+    allMonsterCards.innerHTML = ""; // Töm DOM-elementet för gamla monsterkort
+
+    monsters.forEach((monster) => {
+        const monsterCard = document.createElement("section"); // Skapa en ny kortsektion
+        monsterCard.classList.add("monster-card", monster.colour); // Lägg till klasser för kort och färg
+        monsterCard.setAttribute("data-id", monster.id); // Tilldela kortet ett data-attribut med ID
+
+        // Skapa HTML-struktur för kortet och lägg till attributdata
+        monsterCard.innerHTML = `
+            <h3>${monster.name}</h3>
+            <p>Typ: ${monster.type}</p>
+            <p>Färg: ${monster.colour}</p>
+            ${renderAttributes(monster.attributes)} <!-- Rendera attributen -->
+        `;
+
+        allMonsterCards.appendChild(monsterCard); // Lägg kortet i main-sektionen
+    });
+};
+ 
+
+// Funktion för att rendera attribut som HTML
+const renderAttributes = (attributes) => {
+    let attributesHTML = "";
+    for (const key in attributes) {
+        attributesHTML += `<p>${capitalizeFirstLetter(key)}: ${attributes[key]}</p>`;
+    }
+    return attributesHTML;
+};
+
+
 
 
 

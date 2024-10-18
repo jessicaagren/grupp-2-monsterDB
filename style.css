@@ -61,7 +61,7 @@ main {
         /* padding: 10px; */
         border-radius: 10px;
         min-width: 200px;
-        max-height: 150px;
+        min-height: 150px;
         text-indent: 10px;
         
         h3 {
