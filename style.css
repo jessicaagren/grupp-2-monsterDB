@@ -92,7 +92,6 @@ main {
         z-index: 1;
     }
     
-    
     .dropdown-content button {
         color: rgb(0, 0, 0);
         padding: 12px 16px;
@@ -109,30 +108,39 @@ main {
     .dropdown:hover .dropbutton {
         background-color: #8e7e3e;
     }
+}
+
+#monster-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: var(--lightgray); */
+    /* padding: 10px; */
+    gap: 20px;
+    justify-content: space-between;
 
     .monster-card {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--lightgray);
-        /* padding: 10px; */
-        border-radius: 10px;
-        min-width: 200px;
-        min-height: 150px;
-        text-indent: 10px;
-        
-        h3 {
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-        
-        p {
-            background-color: var(--lightgray);
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            line-height: 2;
-        }
-            
+    background-color: var(--lightgray);
+    border-radius: 10px;
+    max-width: fit-content;
+    min-height: fit-content;
+    text-indent: 10px;
+    
+    h3 {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;  
+        padding-right: 10px;
     }
+    
+    p {
+        min-width: 200px;
+        background-color: var(--lightgray);
+        line-height: 2;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-right: 10px;
+    }
+}
 }
 
 .monster-card.röd {
@@ -262,7 +270,7 @@ footer {
     border-top: var(--border);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     body {
         display: grid;
         min-height: 100vh;
@@ -280,7 +288,7 @@ footer {
         border-bottom: var(--border);
     }
 
-    form {
+    /* form {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1.5fr 2.5fr 0.5fr;
@@ -294,7 +302,7 @@ footer {
         button {
             grid-column: 2;
         }
-    }
+    } */
 
     main {
         border-top: var(--border);
@@ -303,9 +311,18 @@ footer {
     }
 
     .monster-card {
-        display: flex;
-        height: fit-content;
-        width: fit-content;
+        max-height: fit-content;
+        max-width: fit-content;
+        
+        h3 {
+            text-indent: 0;
+            min-height: 50px;
+            width: fit-content;
+            padding: 15px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
         p {
             display: none;
         }
@@ -318,6 +335,7 @@ footer {
         grid-template-rows: 1fr 3fr;
         grid-template-areas: 
         "h2 h2";
+
         h2 {
             grid-area: h2;
         }
