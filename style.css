@@ -5,7 +5,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     line-height: 1.5;
 }
@@ -21,7 +20,7 @@
     --red: #ee6958;
     --lightgray: #F5F5F5;
     --gray: #D9D9D9;
-  }
+}
 
 body {
     display: grid;
@@ -33,6 +32,7 @@ body {
     "aside main"
     "form main"
     "footer footer";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 header {
@@ -42,6 +42,9 @@ header {
     background-color:var(--red);
     padding: var(--padding);
     border-bottom: var(--border);
+    font-family: "Bokor", Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    text-shadow: 0 0 3px white, 0 0 15px white;
 }
 
 main {
@@ -50,6 +53,8 @@ main {
     flex-wrap: wrap;
     align-content: flex-start;
     background-color: var(--gray);
+    background-image: url(Media/test.svg);
+    background-repeat: repeat;
     border-left: var(--border);
     padding: var(--padding);
     gap: 10px;
@@ -61,7 +66,7 @@ main {
         /* padding: 10px; */
         border-radius: 10px;
         min-width: 200px;
-        min-height: 150px;
+        height: fit-content;
         text-indent: 10px;
         
         h3 {
@@ -176,11 +181,17 @@ form {
     /* padding: 20px; */
     /* background-color: var(--gray); */
     margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
- 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 2.5fr 0.5fr;
+    grid-template-areas: 
+    "h2 h2";
+    h2 {
+        grid-area: h2;
+    }
+    button {
+        grid-column: 2;
+    }
     #monster-name {
         width: auto;
     }
@@ -250,21 +261,7 @@ footer {
         border-bottom: var(--border);
     }
 
-    form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1.5fr 2.5fr 0.5fr;
-        grid-template-areas: 
-        "h2 h2"
-        ;
 
-        h2 {
-            grid-area: h2;
-        }
-        button {
-            grid-column: 2;
-        }
-    }
 
     main {
         border-top: var(--border);
@@ -274,7 +271,7 @@ footer {
 
     .monster-card {
         display: flex;
-        height: fit-content;
+        max-height: fit-content;
         width: fit-content;
         p {
             display: none;
