@@ -173,52 +173,71 @@ aside {
 
 form {
     grid-area: form;
-    /* padding: 20px; */
-    /* background-color: var(--gray); */
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
+    padding: var(--padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content max-content max-content 1fr;
+    grid-template-areas:
+    "h2 h2"
+    "monster-name monster-type"
+    "monster-colour monster-attribute"
+    "button button";
+
+    h2 {
+        grid-area: h2;
+        align-self: center;
+        justify-self: center;
+    }
  
     #monster-name {
-        width: auto;
+        grid-area: monster-name;
     }
 
     #monster-type {
-        width: auto;
+        grid-area: monster-type;
     }
    
     #monster-colour {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: flex-start;
+        grid-area: monster-colour;
+
+        span {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        #röd {
+            accent-color: var(--red);
+        }
+        #rosa {
+            accent-color: var(--pink);
+        }
+        #blå {
+            accent-color: var(--blue);
+        }
+        #grön {
+            accent-color: var(--green);
+        }
+        #gul {
+            accent-color: var(--yellow);
+        }
     }
 
-    label {
-        width: 50%;
+    #monster-attribute {
+        grid-area: monster-attribute;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+        }
+
     }
  
-    #röd {
-        accent-color: var(--red);
-    }
-    #rosa {
-        accent-color: var(--pink);
-    }
-    #blå {
-        accent-color: var(--blue);
-    }
-    #grön {
-        accent-color: var(--green);
-    }
-    #gul {
-        accent-color: var(--yellow);
-    }
    
     button {
-    margin-top: 10px;
-    align-self: flex-end;
+        grid-area: button;
+        justify-self: end;
+        align-self: end;
+        
     }
  }
  
