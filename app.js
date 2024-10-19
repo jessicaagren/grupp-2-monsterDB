@@ -182,7 +182,7 @@ monsterAttributes.forEach((attribute) => {
   const attributeInputElement = document.createElement("div");
   attributeInputElement.innerHTML = `
     <label for=${attribute}>` + capitalizeFirstLetter(attribute) + `: </label>
-    <input type="number" id="${attribute}" min="0" max ="10" placeholder="Välj antal ${attribute}">
+    <input type="number" id="${attribute}" min="0" max ="10" placeholder="0">
     `;
 
   monsterAttributeSpanElement.appendChild(attributeInputElement);
@@ -207,11 +207,11 @@ showAllColoursButton.addEventListener(`click`, () => {
 });
 
 // Skapa filtrera efter färg knapparna i deras wrapper
-monsterColours.forEach(colour => {
+monsterColours.forEach(el => {
 
   const filterByColourButton = document.createElement("button");
-  filterByColourButton.innerHTML = `${colour}`;
-  filterByColourButton.id = `filter-${colour}`; 
+  filterByColourButton.innerHTML = capitalizeFirstLetter(`${el}`);
+  filterByColourButton.id = `filter-${el}`; 
   filterByColourButton.classList.add("show-colour");
   filterByColourButton.type = "button";
 
@@ -219,7 +219,7 @@ monsterColours.forEach(colour => {
   
   // Event listener för färgen som filtrerar
     filterByColourButton.addEventListener('click', () => {
-    const filteredMonsters = filterByColour(colour);
+    const filteredMonsters = filterByColour(el);
     renderAllMonsterCards(filteredMonsters);
   });
 });
@@ -242,7 +242,7 @@ showAllTypesButton.addEventListener(`click`, () => {
 monsterTypes.forEach(el => {
 
   const filterByTypeButton = document.createElement("button");
-  filterByTypeButton.innerHTML = `${el}`;
+  filterByTypeButton.innerHTML = capitalizeFirstLetter(`${el}`);
   filterByTypeButton.id = `filter-${el}`; 
   filterByTypeButton.classList.add("show-type");
   filterByTypeButton.type = "button";
