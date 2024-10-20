@@ -1,19 +1,11 @@
-/* body > *, article, form {
-    border: 2px solid blue;
-    margin: 5px;
-} */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    line-height: 1.5;
-}
+/*
+==================================================================================
+Global rules
+==================================================================================
+*/
 
 :root {
-    --border: 0px solid var(--medium);
-    --padding: 20px;
-    /* Förslag på färger nedan (endast exempel) */
+    /* --border: 0px solid var(--medium); */
     --blue: #5C7AFF;
     --pink: #FF85BA;
     --green: #66b77d;
@@ -26,33 +18,66 @@
     --lightest: #FDEEEC;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 16px;
+    color: var(--darkest);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+
+    span {
+        font-size: 1.5rem;
+    }
+}
+
 body {
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 3fr 8fr 1fr;
-    grid-template-areas: 
-    "header header"
-    "form main"
-    "aside main"
-    "footer footer";
+    grid-template-rows: 1fr 3fr 8fr 40px;
+    grid-template-areas:
+        "header header"
+        "form main"
+        "aside main"
+        "footer footer";
     overflow: hidden;
 
     h2 {
-        padding-top: 10px;
-        padding-bottom: 5px;
+        padding: 10px 0 5px 0;
     }
 }
+
+/*
+==================================================================================
+Header
+==================================================================================
+*/
 
 header {
     grid-area: header;
     display: flex;
     justify-content: center;
-    background-color:var(--red);
+    background-color: var(--red);
     color: var(--darkest);
-    padding: var(--padding);
+    padding: 20px;
     border-bottom: var(--border);
 }
+
+/*
+==================================================================================
+Filterbuttons
+==================================================================================
+*/
 
 main {
     grid-area: main;
@@ -73,13 +98,13 @@ main {
         align-items: center;
         flex-direction: row;
         border-bottom: var(--border);
-        
+
         h2 {
             margin-left: 1rem;
             font-size: 1.2rem;
         }
     }
-    
+
     .dropbutton {
         background-color: var(--medium);
         color: var(--lightest);
@@ -95,12 +120,12 @@ main {
         position: relative;
         display: inline-block;
     }
-    
+
     .dropdown-content {
         display: none;
         position: absolute;
     }
-    
+
     .dropdown-content button {
         color: var(--darkest);
         background-color: var(--lightgray);
@@ -110,103 +135,193 @@ main {
         display: block;
         border: var(--border);
     }
-     
+
     .dropdown-content button:hover {
         background-color: var(--lightpink);
     }
-    
+
     .dropdown:hover .dropdown-content {
-      display: block;
+        display: block;
     }
-    
+
     .dropdown:hover .dropbutton {
         background-color: var(--red);
     }
 }
 
+/*
+==================================================================================
+Monster cards
+==================================================================================
+*/
+
 #monster-card-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* background-color: var(--lightgray); */
-    /* padding: 10px; */
+    height: calc(100vh - 200px);
     gap: 20px;
     padding: 20px;
-    justify-content: space-between;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-content: flex-start;
 
     .monster-card {
-    background-color: white;
-    border-radius: 10px;
-    max-width: fit-content;
-    min-height: fit-content;
-    text-indent: 10px;
-    
-    h3 {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;  
-        padding-right: 10px;
+        border-radius: 10px;
+        max-width: fit-content;
+        height: fit-content;
+        text-indent: 10px;
+
+        h3 {
+            border-radius: 10px 10px 0 0;
+            padding-right: 10px;
+        }
+
+        p {
+            min-width: 200px;
+            background-color: white;
+            line-height: 2;
+            padding-right: 10px;
+
+            &:last-child {
+                border-radius: 0 0 10px 10px;
+            }
+        }
     }
-    
-    p {
-        min-width: 200px;
-        background-color: white;
-        line-height: 2;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        padding-right: 10px;
-    }
-}
 }
 
-.monster-card.röd {
-    h3 {
+.monster-card {
+    &.röd h3 {
         background-color: var(--red);
     }
-}
 
-.monster-card.rosa {
-    h3 {
+    &.rosa h3 {
         background-color: var(--pink);
     }
-}
 
-.monster-card.blå {
-    h3 {
+    &.blå h3 {
         background-color: var(--blue);
     }
-}
 
-.monster-card.grön {
-    h3 {
+    &.grön h3 {
         background-color: var(--green);
     }
-}
 
-.monster-card.gul {
-    h3 {
+    &.gul h3 {
         background-color: var(--yellow);
     }
 }
+
+
+/*
+==================================================================================
+Form
+==================================================================================
+*/
+
+form {
+    grid-area: form;
+    padding: 10px 40px 20px 40px;
+    display: grid;
+    color: var(--darkest);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, max-content) 1fr;
+    grid-template-areas:
+        "h2 h2"
+        "monster-name monster-type"
+        "monster-colour monster-attribute"
+        "button button";
+    gap: 10px;
+
+    h2 {
+        grid-area: h2;
+    }
+
+    #monster-name,
+    #monster-type {
+        background-color: var(--lightest);
+        border: none;
+        width: 100px;
+        height: 25px;
+        text-indent: 10px;
+    }
+
+    #monster-colour,
+    #monster-attribute {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;}
+
+    #monster-colour {
+        grid-area: monster-colour;
+
+        input[type="radio"] {
+            width: 15px;
+        }
+
+        #röd {
+            accent-color: var(--red);
+        }
+
+        #rosa {
+            accent-color: var(--pink);
+        }
+
+        #blå {
+            accent-color: var(--blue);
+        }
+
+        #grön {
+            accent-color: var(--green);
+        }
+
+        #gul {
+            accent-color: var(--yellow);
+        }
+    }
+
+    #monster-attribute {
+        grid-area: monster-attribute;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 5px;
+
+            input {
+                text-indent: 10px;
+            }
+        }
+    }
+
+    button {
+        grid-area: button;
+        justify-self: end;
+        align-self: end;
+        background-color: var(--medium);
+        padding: 5px;
+        border: none;
+        color: var(--lightest);
+    }
+}
+
+/*
+==================================================================================
+Aside incl. metadata
+==================================================================================
+*/
 
 aside {
     grid-area: aside;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     color: var(--darkest);
     padding: 10px 40px;
-    padding-bottom: 10px;
     border-top: dotted 4px var(--lightpink);
-    
-    border-bottom: var(--border);
-    
-    h2  {
-        justify-self: center;
-        align-self: center;
-    } 
 
     ul {
-        width: 50%;
+        width: 45%;
     }
 
     li {
@@ -219,176 +334,62 @@ aside {
     } */
 }
 
-form {
-    grid-area: form;
-    padding: 10px 40px;
-    padding-bottom: 10px;
-    display: grid;
-    color: var(--darkest);
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: max-content max-content max-content 1fr;
-    grid-template-areas:
-    "h2 h2"
-    "monster-name monster-type"
-    "monster-colour monster-attribute"
-    "button button";
-    row-gap: 10px;
-    column-gap: 10px;
-
-    /* * {
-        background-color: var(--lightpink);
-    } */
-
-    #monster-name, #monster-type {
-        background-color: var(--lightest);
-        border-radius: 5px;
-        border: none;
-        width: 100px;
-        height: 25px;
-        text-indent: 10px;
-    }
-
-
-    div > input {
-        width: 50px;
-        height: 25px;
-        background-color: var(--lightest);
-        border: none;
-        border-radius: 5px;
-    }
-
-    h2 {
-        grid-area: h2;
-        align-self: center;
-        /* justify-self: center; */
-    }
- 
-    #monster-name {
-        grid-area: monster-name;
-    }
-
-    #monster-type {
-        grid-area: monster-type;
-    }
-   
-    #monster-colour {
-        grid-area: monster-colour;
-
-        span {
-            display: flex;
-            gap: 5px;
-        }
-        
-        #röd {
-            accent-color: var(--red);
-            width: 15px;
-        }
-        #rosa {
-            accent-color: var(--pink);
-            width: 15px;
-        }
-        #blå {
-            accent-color: var(--blue);
-            width: 15px;
-        }
-        #grön {
-            accent-color: var(--green);
-            width: 15px;
-        }
-        #gul {
-            accent-color: var(--yellow);
-            width: 15px;
-        }
-    }
-
-    #monster-attribute {
-        grid-area: monster-attribute;
-
-        div {
-            display: flex;
-            justify-content: space-between;
-            /* gap: 10px; */
-            padding-bottom: 5px;
-
-            input {
-                text-indent: 10px;
-            }
-        }
-
-    }
-   
-    button {
-        grid-area: button;
-        justify-self: end;
-        align-self: end;
-        background-color: var(--medium);
-        padding: 5px; 
-        border: none;
-        color: var(--lightest);
-    }
-}
+/*
+==================================================================================
+Footer
+==================================================================================
+*/
 
 footer {
     grid-area: footer;
     background-color: var(--red);
     color: var(--darkest);
     display: flex;
+    height: 40px;
+
     justify-content: center;
     align-items: center;
     border-top: var(--border);
 }
 
+/*
+==================================================================================
+Media query (mobile version)
+==================================================================================
+*/
+
 @media (max-width: 800px) {
+    html {
+        font-size: 14px;
+    }
+
     body {
+        overflow-y: auto;
         display: grid;
         min-height: 100vh;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 3fr 5fr 3fr 1fr;
-        grid-template-areas: 
-        "header"
-        "form"
-        "main"
-        "aside"
-        "footer";
+        grid-template-areas:
+            "header"
+            "form"
+            "main"
+            "aside"
+            "footer";
     }
 
-    header {
-        border-bottom: var(--border);
-    }
-
-    /* form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1.5fr 2.5fr 0.5fr;
-        grid-template-areas: 
-        "h2 h2"
-        ;
-
-        h2 {
-            grid-area: h2;
-        }
-        button {
-            grid-column: 2;
-        }
-    } */
-
-    main {
-        border-top: var(--border);
-        border-bottom: var(--border);
-        border-left: 0;
+    #monster-card-wrapper {
+        height: fit-content;
     }
 
     .monster-card {
         max-height: fit-content;
         max-width: fit-content;
-        
+
         h3 {
             text-indent: 0;
             min-height: 50px;
-            width: fit-content;
             padding: 15px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-radius: 10px !important;
         }
 
         p {
@@ -397,19 +398,6 @@ footer {
     }
 
     aside {
-        border: 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 3fr;
-        grid-template-areas: 
-        "h2 h2";
-
-        h2 {
-            grid-area: h2;
-        }
-    }
-
-    footer {
-        border-top: var(--border);
+        border: none;
     }
 }
