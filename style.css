@@ -75,7 +75,7 @@ header {
 
 /*
 ==================================================================================
-Filterbuttons
+Filter buttons
 ==================================================================================
 */
 
@@ -83,7 +83,7 @@ main {
     grid-area: main;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    /* align-content: flex-start; */
     background-color: var(--lightpink);
     color: var(--darkest);
     border-left: var(--border);
@@ -157,7 +157,6 @@ Monster cards
 
 #monster-card-wrapper {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     height: calc(100vh - 200px);
     gap: 20px;
@@ -307,7 +306,7 @@ form {
 
 /*
 ==================================================================================
-Aside incl. metadata
+Aside (metadata)
 ==================================================================================
 */
 
