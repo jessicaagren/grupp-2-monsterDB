@@ -21,6 +21,8 @@ const colourSelect = document.querySelector("#monster-colour");
 const registerMonsterForm = document.querySelector("#monster-form");
 const allMonsterCards = document.querySelector("#monster-card-wrapper");
 const monsterAttributeSpanElement = document.querySelector("#monster-attribute");
+const metadataColours = document.querySelector("#metadata-colours");
+const metadataTypes = document.querySelector("#metadata-types");
 
 // ===== FUNCTIONS =====
 // Funktion för att skriva stor bokstav i början
@@ -54,8 +56,30 @@ const populateSelectOptions = (domHandle, options) => {
 
 populateSelectOptions(typeSelect, monsterTypes);
 
-// Loopar igenom arrayen med färger och skapar radio input och korresponderande labels
+// Populerar metadatafältet med typer
+for (const el of monsterTypes) {
+  const metadataListItemType = document.createElement("li");
+  metadataListItemType.innerHTML = capitalizeFirstLetter(el);
+  metadataListItemType.id = (`listItem-${[el]}`);
+  metadataTypes.appendChild(metadataListItemType);
+
+  const spanInListItem = document.createElement("span");
+  spanInListItem.innerHTML = 0;
+  spanInListItem.id = (`antal-${[el]}`);
+  metadataListItemType.appendChild(spanInListItem);
+}
+// Loopar igenom arrayen med färger och skapar radio input och korresponderande labels + populerar metadatafältet med färger.
 for (const el of monsterColours) {
+    const metadataListItemColour = document.createElement("li");
+    metadataListItemColour.innerHTML = capitalizeFirstLetter(`${[el]}a monster:`);  // lägga till if sats som inte lägger till om sista bokstav är "a"
+    metadataListItemColour.id = (`listItem-${[el]}`);
+    metadataColours.appendChild(metadataListItemColour);
+
+    const spanInListItem = document.createElement("span");
+    spanInListItem.innerHTML = 0;
+    spanInListItem.id = (`antal-${[el]}`);
+    metadataListItemColour.appendChild(spanInListItem);
+
     const inputLabelSpanElement = document.createElement("span");
     colourSelect.appendChild(inputLabelSpanElement);
     
@@ -75,6 +99,7 @@ for (const el of monsterColours) {
     inputLabelSpanElement.appendChild(colourOptions);
     inputLabelSpanElement.appendChild(labelForColours);
 }
+
 
 // Eventlistener på formulär
 registerMonsterForm.addEventListener("submit", (e) => {
