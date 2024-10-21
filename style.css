@@ -21,7 +21,8 @@ Global rules
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Arimo", Arial, Helvetica, sans-serif;
+    font-weight: 300;
     box-sizing: border-box;
     line-height: 1.5;
     font-size: 16px;
@@ -30,14 +31,21 @@ Global rules
 
 h1 {
     font-size: 2rem;
+    font-family: "Spectral SC", Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 1.5rem;
+    font-weight: bold;
 
     span {
         font-size: 1.5rem;
     }
+}
+
+h3 {
+    font-weight: bold !important;
 }
 
 body {
