@@ -175,7 +175,7 @@ Monster cards
 
     .monster-card {
         border-radius: 10px;
-        max-width: fit-content;
+        min-width: 18%;
         height: fit-content;
         text-indent: 10px;
 
@@ -184,7 +184,7 @@ Monster cards
         }
 
         p {
-            min-width: 200px;
+            /* min-width: 200px; */
             background-color: white;
             line-height: 2;
             padding-right: 10px;
@@ -389,7 +389,7 @@ Media query (mobile version)
 
     .monster-card {
         max-height: fit-content;
-        max-width: fit-content;
+        width: fit-content;
 
         h3 {
             text-indent: 0;
