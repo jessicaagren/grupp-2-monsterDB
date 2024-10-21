@@ -181,7 +181,7 @@ Monster cards
 
     .monster-card {
         border-radius: 10px;
-        min-width: 18%;
+        min-width: 200px;
         height: fit-content;
         text-indent: 10px;
 
