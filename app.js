@@ -69,7 +69,12 @@ const renderAllMonsterCards = (monsters) => {
 
         // Skapa HTML-struktur för kortet
         monsterCard.innerHTML = `
+        <span class="monster-card-heading-wrapper">
         <h3>${monster.name}</h3>
+        <button class="icon-button">
+          <img src="/Media/pen-line.svg" class="icon">
+          </button>
+        </span>
             <p>Typ: ${monster.type}</p>
             <p>Färg: ${monster.colour}</p>
             ${renderAttributes(monster.attributes)}

@@ -185,8 +185,22 @@ Monster cards
         height: fit-content;
         text-indent: 10px;
 
-        h3 {
+        .monster-card-heading-wrapper {
+            display: flex;
+            width: 100%;
+            /* background-color: blue; */
+            justify-content: space-between;
             border-radius: 10px 10px 0 0;
+        
+            h3 {
+                color: #370A06;
+            }
+
+            .icon-button {
+                .icon {
+                    color: #370A06;
+                }
+            }
         }
 
         p {
@@ -203,23 +217,23 @@ Monster cards
 }
 
 .monster-card {
-    &.röd h3 {
+    &.röd .monster-card-heading-wrapper {
         background-color: var(--red);
     }
 
-    &.rosa h3 {
+    &.rosa .monster-card-heading-wrapper {
         background-color: var(--pink);
     }
 
-    &.blå h3 {
+    &.blå .monster-card-heading-wrapper {
         background-color: var(--blue);
     }
 
-    &.grön h3 {
+    &.grön .monster-card-heading-wrapper {
         background-color: var(--green);
     }
 
-    &.gul h3 {
+    &.gul .monster-card-heading-wrapper {
         background-color: var(--yellow);
     }
 }
