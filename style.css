@@ -35,11 +35,6 @@ h1 {
     font-weight: bold;
 }
 
-h2,
-h3 {
-    font-family: "Spectral", Georgia, 'Times New Roman', Times, serif;
-}
-
 h2 {
     font-size: 1.5rem;
     font-weight: bold;
@@ -83,7 +78,7 @@ header {
     justify-content: center;
     background-color: var(--red);
     color: var(--darkest);
-    padding: 20px;
+    padding: 10px;
     border-bottom: var(--border);
 }
 
@@ -97,11 +92,13 @@ main {
     grid-area: main;
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     /* align-content: flex-start; */
     background-color: var(--lightpink);
     color: var(--darkest);
     border-left: var(--border);
     gap: 10px;
+    align-content: flex-start;
 
     /* Css för dropdown ===Mats och Sylwia=== */
     .navbar {
@@ -112,6 +109,7 @@ main {
         align-items: center;
         flex-direction: row;
         border-bottom: var(--border);
+        padding-top: 20px;
 
         h2 {
             margin-left: 1rem;
@@ -142,7 +140,7 @@ main {
 
     .dropdown-content button {
         color: var(--darkest);
-        background-color: var(--lightgray);
+        background-color: var(--lightest);
         width: 100px;
         padding: 5px;
         text-decoration: none;
@@ -165,6 +163,23 @@ main {
 
 /*
 ==================================================================================
+Edit popup
+==================================================================================
+*/
+
+#edit-popup-window {
+    background-color: #FF85BA;
+    width: 400px;
+    height: 300px;
+    z-index: 1000;
+    position: fixed;
+    left: 50%;
+    justify-self: center;
+    align-self: center;
+}
+
+/*
+==================================================================================
 Monster cards
 ==================================================================================
 */
@@ -172,18 +187,19 @@ Monster cards
 #monster-card-wrapper {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100vh - 200px);
+    width: 100%;
+    height: calc(100vh - 170px);
     gap: 20px;
-    padding: 20px;
+    padding: 10px 20px;
     overflow-y: auto;
     overflow-x: hidden;
     align-content: flex-start;
 
     .monster-card {
         border-radius: 10px;
-        min-width: 200px;
+        min-width: 18%;
         height: fit-content;
-        text-indent: 10px;
+        /* text-indent: 10px; */
 
         .monster-card-heading-wrapper {
             display: flex;
@@ -191,15 +207,24 @@ Monster cards
             /* background-color: blue; */
             justify-content: space-between;
             border-radius: 10px 10px 0 0;
-        
-            h3 {
-                color: #370A06;
+            padding: 10px;
+
+            button {
+                background: none;
+                border: none;
+                padding-left: 10px;
             }
 
-            .icon-button {
-                .icon {
-                    color: #370A06;
-                }
+            button:hover {
+                color: white;
+            }
+
+            img {
+                width: 20px;
+            }
+
+            h3 {
+                color: #370A06;
             }
         }
 
@@ -208,6 +233,7 @@ Monster cards
             background-color: white;
             line-height: 2;
             padding-right: 10px;
+            padding-left: 10px;
 
             &:last-child {
                 border-radius: 0 0 10px 10px;
@@ -307,6 +333,11 @@ form {
         }
     }
 
+    .colour-span {
+        display: flex;
+        gap: 5px;
+    }
+
     #monster-attribute {
         grid-area: monster-attribute;
 
@@ -316,9 +347,13 @@ form {
             column-gap: 5px;
 
             input {
-                text-indent: 10px;
+                text-indent: 5px;
             }
         }
+    }
+
+    button:hover {
+        background-color: var(--red);
     }
 
     button {
@@ -410,20 +445,33 @@ Media query (mobile version)
 
     .monster-card {
         max-height: fit-content;
-        width: fit-content;
+        width: 45%;
 
-        h3 {
-            text-indent: 0;
-            min-height: 50px;
-            padding: 15px;
+
+        .monster-card-heading-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border-radius: 10px !important;
+
+            h3 {
+                text-indent: 0;
+                min-height: 50px;
+            }
+
+            button {
+                padding: 0 !important;
+            }
         }
+
+
 
         p {
             display: none;
         }
     }
 
+    
     aside {
         border: none;
     }
