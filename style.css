@@ -83,7 +83,7 @@ header {
     justify-content: center;
     background-color: var(--red);
     color: var(--darkest);
-    padding: 20px;
+    padding: 10px;
     border-bottom: var(--border);
 }
 
@@ -427,4 +427,25 @@ Media query (mobile version)
     aside {
         border: none;
     }
+}
+
+/*
+==================================================================================
+Edit popup
+==================================================================================
+*/
+
+.popup-wrapper {
+    width: 200px;
+    height: 150px;
+    background-color: #66b77d;
+}
+
+
+#edit-popup-window {
+    width: 300px;
+    height: 150px;
+    background-color: #FF85BA;
+    position: relative;
+    z-index: 1;
 }

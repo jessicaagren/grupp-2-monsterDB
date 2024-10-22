@@ -62,22 +62,24 @@ Render function
 const renderAllMonsterCards = (monsters) => {
     allMonsterCards.innerHTML = ""; //
     
-    monsters.forEach((monster) => {
+    monsters.forEach((el) => {
         const monsterCard = document.createElement("section");
-        monsterCard.classList.add("monster-card", monster.colour); 
-        monsterCard.setAttribute("data-id", monster.id);
+        monsterCard.classList.add("monster-card", el.colour); 
+        monsterCard.setAttribute("data-id", el.id);
+
+        let idAsString = currentID.toString();
 
         // Skapa HTML-struktur för kortet
         monsterCard.innerHTML = `
         <span class="monster-card-heading-wrapper">
-        <h3>${monster.name}</h3>
-        <button class="icon-button">
+        <h3>${el.name}</h3>
+        <button class="edit-button" id="${idAsString}">
           <img src="/Media/pen-line.svg" class="icon">
           </button>
         </span>
-            <p>Typ: ${monster.type}</p>
-            <p>Färg: ${monster.colour}</p>
-            ${renderAttributes(monster.attributes)}
+            <p>Typ: ${el.type}</p>
+            <p>Färg: ${el.colour}</p>
+            ${renderAttributes(el.attributes)}
             `;
 
         allMonsterCards.appendChild(monsterCard);
@@ -173,23 +175,28 @@ for (const el of monsterColours) {
     const monsterType = document.querySelector("#monster-type").value; 
     const monsterColour = document.querySelector('input[name="colour"]:checked').value;
 
+    const newID = currentID;
+
     // Skapa ett nytt monsterobjekt med unikt ID
     const newMonster = {
-        id: currentID,
+        id: newID,
         name: monsterName,
         type: monsterType,
         colour: monsterColour, 
         attributes: newAttributes,
       };
+
       
       // Uppdatera state med det nya monstret
       allMonsters.push(newMonster);
-      currentID++;
       
       // Rendera monsterkorten och metadata
       renderAllMonsterCards(allMonsters);
       registerMonsterForm.reset();
       renderMonsterData();
+
+      // Öka id till nästa monster
+      currentID++;
     });
     
 
@@ -335,3 +342,80 @@ Initiation
 
 renderAllMonsterCards(allMonsters);
 renderMonsterData();
+
+
+
+/*
+==================================================================================
+Edit
+==================================================================================
+*/
+
+
+
+
+
+
+
+// updatedAttribute
+// // Kom åt monstrets attributes
+// monsterToEdit.attributes[attribute];
+
+//
+const editPopup = document.createElement("section");
+const editPopupWindow = document.querySelector("#edit-popup-window");
+editPopupWindow.appendChild(editPopup);
+editPopup.style.display = "none";
+editPopup.classList.add("popup-wrapper");
+
+const openEditPopup = (event) => {
+  editPopup.innerHTML = "";
+  editPopup.style.display = "block";
+  
+  
+  const cancelEditButton = document.createElement("button");
+  cancelEditButton.innerHTML = "Avbryt";
+  editPopup.appendChild(cancelEditButton);
+  cancelEditButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    editPopupWindow.style.display = "none";
+  });
+  
+  monsterAttributes.forEach((attribute) => {
+    const currentAttribute = document.createElement("span");
+    currentAttribute.innerHTML = `
+    <label for=${attribute}>` + capitalizeFirstLetter(attribute) + `: </label>
+    <input type="number" id="${attribute}" min="0" max ="10" placeholder="${attribute[attribute]}">
+    `;
+    
+    editPopup.appendChild(currentAttribute);
+  });
+// renderAttributes(monsterToEdit.attributes);
+  
+const saveEditButton = document.createElement("button");
+saveEditButton.innerHTML = "Spara";
+editPopup.appendChild(saveEditButton);
+saveEditButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  
+  // skriv över egenskaper här...
+  
+  editPopupWindow.style.display = "none";
+});
+}
+
+// Eventlyssnare till alla redigeringsknappar
+document.querySelectorAll('.icon-button').forEach(button => {
+  button.addEventListener('click', (event) => {
+    
+    // Hitta knappens id
+    const buttonId = event.currentTarget.id;
+    console.log(`${buttonId.value}`);
+    // Hitta monstret med samma id som knappen
+    const monsterToEdit = allMonsters.find(obj => obj.id === buttonId);
+
+    console.log(`${monsterToEdit}`);
+
+    openEditPopup(event);
+  });
+});
