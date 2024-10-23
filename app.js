@@ -406,10 +406,13 @@ document.querySelectorAll('.edit-button').forEach(button => {
     const buttonId = event.currentTarget.id;
     console.log(`${buttonId.value}`);
     // Hitta monstret med samma id som knappen
-    const monsterToEdit = state.allMonsters.find(obj => obj.id.toString() === buttonId);
+    const monsterToEdit = state.allMonsters.find(obj => obj.id === buttonId);
 
     console.log(`${monsterToEdit}`);
 
     openEditPopup(event);
   });
 });
+
+
+
