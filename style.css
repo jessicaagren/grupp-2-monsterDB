@@ -439,6 +439,7 @@ Edit popup
     width: 200px;
     height: 150px;
     background-color: #66b77d;
+    display: block;
 }
 
 
@@ -447,5 +448,4 @@ Edit popup
     height: 150px;
     background-color: #FF85BA;
     position: relative;
-    z-index: 1;
 }

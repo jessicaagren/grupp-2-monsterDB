@@ -351,17 +351,10 @@ Edit
 ==================================================================================
 */
 
-
-
-
-
-
-
 // updatedAttribute
-// // Kom åt monstrets attributes
+// Kom åt monstrets attributes?????
 // monsterToEdit.attributes[attribute];
 
-//
 const editPopup = document.createElement("section");
 const editPopupWindow = document.querySelector("#edit-popup-window");
 editPopupWindow.appendChild(editPopup);
@@ -376,9 +369,10 @@ const openEditPopup = (event) => {
   const cancelEditButton = document.createElement("button");
   cancelEditButton.innerHTML = "Avbryt";
   editPopup.appendChild(cancelEditButton);
+
   cancelEditButton.addEventListener("click", (e) => {
     e.preventDefault();
-    editPopupWindow.style.display = "none";
+    editPopup.style.display = "none";
   });
   
   monsterAttributes.forEach((attribute) => {
@@ -392,20 +386,21 @@ const openEditPopup = (event) => {
   });
 // renderAttributes(monsterToEdit.attributes);
   
-const saveEditButton = document.createElement("button");
-saveEditButton.innerHTML = "Spara";
-editPopup.appendChild(saveEditButton);
-saveEditButton.addEventListener("click", (e) => {
-  e.preventDefault();
+  const saveEditButton = document.createElement("button");
+  saveEditButton.innerHTML = "Spara";
+  editPopup.appendChild(saveEditButton);
+
+  saveEditButton.addEventListener("click", (e) => {
+    e.preventDefault();
   
-  // skriv över egenskaper här...
+    // skriv över egenskaper här...
   
-  editPopupWindow.style.display = "none";
-});
+    editPopup.style.display = "none";
+  });
 }
 
 // Eventlyssnare till alla redigeringsknappar
-document.querySelectorAll('.icon-button').forEach(button => {
+document.querySelectorAll('.edit-button').forEach(button => {
   button.addEventListener('click', (event) => {
     
     // Hitta knappens id
