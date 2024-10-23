@@ -72,13 +72,13 @@ const renderAllMonsterCards = (monsters) => {
         monsterCard.classList.add("monster-card", el.colour); 
         monsterCard.setAttribute("data-id", el.id);
 
-        let idAsString = currentID.toString();
+        // let idAsString = state.currentID.toString();
 
         // Skapa HTML-struktur för kortet
         monsterCard.innerHTML = `
         <span class="monster-card-heading-wrapper">
         <h3>${el.name}</h3>
-        <button class="edit-button" id="${idAsString}">
+        <button class="edit-button" data-id="${el.id}">
           Ändra
           </button>
         </span>
@@ -87,7 +87,8 @@ const renderAllMonsterCards = (monsters) => {
             ${renderAttributes(el.attributes)}
             `;
 
-        domHandles.allMonsterCards.appendChild(monsterCard);
+            
+            domHandles.allMonsterCards.appendChild(monsterCard);
     });
 };
 
@@ -170,7 +171,7 @@ for (const el of config.monsterColours) {
     const monsterType = document.querySelector("#monster-type").value; 
     const monsterColour = document.querySelector('input[name="colour"]:checked').value;
 
-    const newID = currentID;
+    const newID = state.currentID;
 
     // Skapa ett nytt monsterobjekt med unikt ID
     const newMonster = {
@@ -180,6 +181,9 @@ for (const el of config.monsterColours) {
         colour: monsterColour, 
         attributes: newAttributes,
       };
+
+      console.log(newMonster);
+
 
       
       // Uppdatera state med det nya monstret
@@ -370,7 +374,7 @@ const openEditPopup = (event) => {
     editPopup.style.display = "none";
   });
   
-  monsterAttributes.forEach((attribute) => {
+  config.monsterAttributes.forEach((attribute) => {
     const currentAttribute = document.createElement("span");
     currentAttribute.innerHTML = `
     <label for=${attribute}>` + capitalizeFirstLetter(attribute) + `: </label>
@@ -402,7 +406,7 @@ document.querySelectorAll('.edit-button').forEach(button => {
     const buttonId = event.currentTarget.id;
     console.log(`${buttonId.value}`);
     // Hitta monstret med samma id som knappen
-    const monsterToEdit = allMonsters.find(obj => obj.id === buttonId);
+    const monsterToEdit = state.allMonsters.find(obj => obj.id.toString() === buttonId);
 
     console.log(`${monsterToEdit}`);
 
