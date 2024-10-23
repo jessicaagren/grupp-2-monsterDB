@@ -18,11 +18,11 @@
 			<nav class="navbar">
 				<h2>Filtrera efter:</h2>
                 <div class="dropdown">
-					<button class="dropbutton">Välj färg</button>
+                    <button class="dropbutton">Färg</button>
                     <div class="dropdown-content" id="dropdown-colour"></div>
 				</div>  
 				<div class = "dropdown">
-					<button class="dropbutton">Välj typ</button>
+					<button class="dropbutton">Typ</button>
                     <div class="dropdown-content" id="dropdown-type"></div>
 				</div>
             </nav>
@@ -41,16 +41,17 @@
 		<form action="" id="monster-form">
 			<h2>Registraturet</h2>
 			<label for="monster-name">
-				<h3>Namn:</h3>
+				<h3>Namn</h3>
 				<input
 					type="text"
 					name="monster-name"
 					id="monster-name"
 					placeholder="..."
+					maxlength="20"
 					required
 			/></label>
 			<label for="monster-type">
-				<h3>Typ:</h3>
+				<h3>Typ</h3>
 				<select 
 					name="monster-type" 
 					id="monster-type" required>
@@ -60,9 +61,9 @@
 				for="monster-colour" 
 				name="monster-colour" 
 				id="monster-colour">
-				<h3>Färg:</h3>
+				<h3>Färg</h3>
 			</label>
-			<span id="monster-attribute"><h3>Utseende:</h3></span>
+			<span id="monster-attribute"><h3>Utseende</h3></span>
 			<button type="submit" id="submit">Lägg till</button>
 		</form>
 		<footer>Mats, Siri, Sylwia och Jessica</footer>

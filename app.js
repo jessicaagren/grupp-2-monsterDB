@@ -5,14 +5,12 @@ State
 */
 
 const allMonsters = [
-    { name: "1", type: "ismonster", colour: "blå", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
-    { name: "2", type: "eldmonster", colour: "röd", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
-    { name: "3", type: "blixtmonster", colour: "grön", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
-    { name: "4", type: "eldmonster", colour: "rosa", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
-    { name: "5", type: "blixtmonster", colour: "gul", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
+    { name: "Demo 1", type: "ismonster", colour: "blå", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
+    { name: "Demo 2", type: "eldmonster", colour: "röd", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
+    { name: "Demo 3", type: "blixtmonster", colour: "grön", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
+    { name: "Demo 4", type: "eldmonster", colour: "rosa", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
+    { name: "Demo 5", type: "blixtmonster", colour: "gul", attributes: {huvuden: 1, armar: 4, horn: 2, tår: 9} },
 ];
-// const allAttributes = [];
-// const temporaryAttributesContainer = {};
 let currentID = 1; // Ger varje monster ett unikt ID
 
 /*
@@ -86,17 +84,6 @@ const renderAllMonsterCards = (monsters) => {
     });
 };
 
-// // Funktion för att rendera monsterkort
-// const renderDemoMonsterCards = () => {
-//     allMonsters.forEach((monster) => {
-//       const monsterCard = document.createElement("section");
-//       monsterCard.classList.add("monster-card", monster.colour);
-//       monsterCard.innerHTML = `<h3>${monster.name}</h3><p>Typ: ${monster.type}</p><p>Färg: ${monster.colour}</p>`;
-  
-//       allMonsterCards.appendChild(monsterCard);
-//     });
-//   };
-  
 /*
 ==================================================================================
 Form
@@ -127,10 +114,11 @@ for (const el of monsterTypes) {
   spanInListItem.id = (`antal-${[el]}`);
   metadataListItemType.appendChild(spanInListItem);
 }
-// Loopar igenom arrayen med färger och skapar radio input och korresponderande labels + populerar metadatafältet med färger.
+
+// Populerar metadatafältet med färger
 for (const el of monsterColours) {
   const metadataListItemColour = document.createElement("li");
-  metadataListItemColour.innerHTML = capitalizeFirstLetter(`${[el]}a monster: `);  // lägga till if sats som inte lägger till om sista bokstav är "a"
+  metadataListItemColour.innerHTML = capitalizeFirstLetter(`${el}${el.slice(-1) === "a" ? "" : "a"} monster: `);
   metadataListItemColour.id = (`listItem-${[el]}`);
   metadataColours.appendChild(metadataListItemColour);
   
@@ -138,8 +126,12 @@ for (const el of monsterColours) {
   spanInListItem.innerHTML = 0;
   spanInListItem.id = (`antal-${[el]}`);
   metadataListItemColour.appendChild(spanInListItem);
+}
 
+// Loopar igenom arrayen med färger och skapar radio input och korresponderande labels
+for (const el of monsterColours) {
     const inputLabelSpanElement = document.createElement("span");
+    inputLabelSpanElement.classList.add("colour-span");
     colourSelect.appendChild(inputLabelSpanElement);
     
     const colourOptions = document.createElement("input");
@@ -153,7 +145,7 @@ for (const el of monsterColours) {
     labelForColours.setAttribute("for", colourOptions.id);
     // labelForColours.textContent = el;
     labelForColours.innerHTML = capitalizeFirstLetter(el);
-    labelForColours.classList = el;
+    labelForColours.classList.add(el);
     
     inputLabelSpanElement.appendChild(colourOptions);
     inputLabelSpanElement.appendChild(labelForColours);
@@ -241,16 +233,16 @@ const amountOfType = (type) => {
 // funktion som renderar hela metadatarutan
 const renderMonsterData = () => {
   const totalAmountElement = document.getElementById(`antal-totalt`);
-  totalAmountElement.innerText = allMonsters.length;
+  totalAmountElement.innerHTML = allMonsters.length;
   
   monsterColours.forEach((colour) => {
     const colourElement = document.getElementById(`antal-${colour}`);
-    colourElement.innerText = amountOfColour(colour);
+    colourElement.innerHTML = amountOfColour(colour);
   });
   
   monsterTypes.forEach((type) => {
     const typeElement = document.getElementById(`antal-${type}`);
-    typeElement.innerText = amountOfType(type);
+    typeElement.innerHTML = amountOfType(type);
   });
 };
 
