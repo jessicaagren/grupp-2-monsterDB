@@ -66,6 +66,10 @@ body {
     }
 }
 
+button {
+    cursor: pointer;
+}
+
 /*
 ==================================================================================
 Header
@@ -120,7 +124,6 @@ main {
     .dropbutton {
         background-color: var(--medium);
         color: var(--lightest);
-        cursor: pointer;
         height: 30px;
         width: 70px;
         margin-left: 1rem;
@@ -147,7 +150,7 @@ main {
         display: block;
         border: var(--border);
     }
-
+    
     .dropdown-content button:hover {
         background-color: var(--lightpink);
     }
