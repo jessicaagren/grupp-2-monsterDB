@@ -72,7 +72,7 @@ const renderAllMonsterCards = (monsters) => {
         <span class="monster-card-heading-wrapper">
         <h3>${el.name}</h3>
         <button class="edit-button" id="${idAsString}">
-          <img src="/Media/pen-line.svg" class="icon">
+          Ändra
           </button>
         </span>
             <p>Typ: ${el.type}</p>
