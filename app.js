@@ -346,19 +346,19 @@ Edit
 ==================================================================================
 */
 
-// updatedAttribute
-// Kom åt monstrets attributes?????
-// monsterToEdit.attributes[attribute];
-
-const editPopup = document.createElement("section");
+// Edit-popup setup
 const editPopupWindow = document.querySelector("#edit-popup-window");
+const editPopup = document.createElement("section");
+editPopup.classList.add("popup-wrapper");
 editPopupWindow.appendChild(editPopup);
 editPopup.style.display = "none";
-editPopup.classList.add("popup-wrapper");
+editPopupWindow.style.display = "none";
 
+// Funktion som sköter edit-popup fönster
 const openEditPopup = (monsterToEdit) => {
   editPopup.innerHTML = "";
   editPopup.style.display = "block";
+  editPopupWindow.style.display = "block";
 
   const cancelEditButton = document.createElement("button");
   cancelEditButton.innerHTML = "Avbryt";
@@ -367,8 +367,10 @@ const openEditPopup = (monsterToEdit) => {
   cancelEditButton.addEventListener("click", (e) => {
     e.preventDefault();
     editPopup.style.display = "none";
+    editPopupWindow.style.display = "none";
   });
 
+  // Skriver ut värderna innan redigering
   config.monsterAttributes.forEach((attribute) => {
     const currentAttribute = document.createElement("span");
     currentAttribute.innerHTML = `
@@ -385,32 +387,30 @@ const openEditPopup = (monsterToEdit) => {
   saveEditButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // Uppdatera utseende-egenskaper
-    // config.monsterAttributes.forEach((attribute) => {
-    //   const updatedValue = document.getElementById(attribute).value;
-    //   monsterToEdit.attributes[attribute] = updatedValue;
-    // });
+    // Uppdaterar utseende-egenskaperna
+    config.monsterAttributes.forEach((attribute) => {
+      const updatedAttribute = document.getElementById(attribute).value;
+      monsterToEdit.attributes[attribute] = updatedAttribute;
+    });
 
     editPopup.style.display = "none";
+    editPopupWindow.style.display = "none";
 
     renderAllMonsterCards(state.allMonsters);
   });
 };
 
+// Eventlyssnare som hittar objektet med samma id som knappen och sedan startar 
 domHandles.allMonsterCards.addEventListener('click', (event) => {
   if (event.target.classList.contains('edit-button')) {
     
+    // Lagrar knappens data-id
     const buttonID = event.target.dataset.id;
-    console.log(`Hittat knappens id: ${buttonID}`);
 
+    // Lagrar monsterobjektets id
     const monsterToEdit = state.allMonsters.find(monster => monster.id == buttonID);
-    if (monsterToEdit) {
-      console.log(`Hittat rätt monster:`, monsterToEdit);
 
-      openEditPopup(monsterToEdit);
-
-    } else {
-      console.error(`Monster med rätt id hittades inte. AAHHHHH`);
-    }
+    // Startar edit-popupen
+    openEditPopup(monsterToEdit);
   }
 });
