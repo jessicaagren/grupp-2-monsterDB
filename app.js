@@ -7,37 +7,42 @@ State
 const state = {
 	allMonsters: [
 		{
+      id: 1,
 			name: 'Demo 1',
 			type: 'ismonster',
 			colour: 'blå',
 			attributes: { huvuden: 1, armar: 4, horn: 2, tår: 9 },
 		},
 		{
+      id: 2,
 			name: 'Demo 2',
 			type: 'eldmonster',
 			colour: 'röd',
 			attributes: { huvuden: 1, armar: 4, horn: 2, tår: 9 },
 		},
 		{
+      id: 3,
 			name: 'Demo 3',
 			type: 'blixtmonster',
 			colour: 'grön',
 			attributes: { huvuden: 1, armar: 4, horn: 2, tår: 9 },
 		},
 		{
+      id: 4,
 			name: 'Demo 4',
 			type: 'eldmonster',
 			colour: 'rosa',
 			attributes: { huvuden: 1, armar: 4, horn: 2, tår: 9 },
 		},
 		{
+      id: 5,
 			name: 'Demo 5',
 			type: 'blixtmonster',
 			colour: 'gul',
 			attributes: { huvuden: 1, armar: 4, horn: 2, tår: 9 },
 		},
 	],
-	currentID: 1, // Ger varje monster ett unikt ID
+	currentID: 6, // Ger varje monster ett unikt ID
 };
 
 /*
