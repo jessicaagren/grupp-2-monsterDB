@@ -69,7 +69,7 @@ body {
 button {
     cursor: pointer;
     transition: background-color 0.3s;
-}
+    }
 
 /*
 ==================================================================================
@@ -173,23 +173,22 @@ Edit popup
 */
 
 #edit-popup-window {
-    width: 300px;
-    height: 150px;
-    background-color: #FF85BA;
+    width: 0;
+    height: 0;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 999;
     display: block;
 }
 
 .popup-wrapper {
     width: 300px;
     padding: 20px;
-    background-color: #FF85BA;
+    background-color: var(--lightpink);
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px var(--darkest);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -201,7 +200,6 @@ Edit popup
 }
 
 .popup-wrapper label {
-    margin-bottom: 5px;
     font-weight: bold;
 }
 
@@ -209,24 +207,21 @@ Edit popup
     width: 100%;
     padding: 5px;
     border: 1px solid var(--darkest);
-    border-radius: 5px;
-    margin-bottom: 10px;
+    margin: 5px 0;
 }
 
 .popup-wrapper button {
+    display: block;
     background-color: var(--medium);
     color: var(--lightest);
     border: none;
-    border-radius: 5px;
     padding: 10px;
-    margin-top: 10px;
+    margin: 5px 0;
 }
 
 .popup-wrapper button:hover {
     background-color: var(--red);
 }
-
-
 
 /*
 ==================================================================================
@@ -244,52 +239,69 @@ Monster cards
     overflow-y: auto;
     overflow-x: hidden;
     align-content: flex-start;
+}
 
-    .monster-card {
-        border-radius: 10px;
-        min-width: 18%;
-        height: fit-content;
-        /* text-indent: 10px; */
+.monster-card:hover {
+    animation: shake-from-center 0.5s infinite;
+}
 
-        .monster-card-heading-wrapper {
-            display: flex;
-            width: 100%;
-            /* background-color: blue; */
-            justify-content: space-between;
-            border-radius: 10px 10px 0 0;
-            padding: 10px;
+.monster-card {
+    border-radius: 10px;
+    min-width: 18%;
+    height: fit-content;
+    transition: transform 0.3s ease-in-out;
+}
 
+.monster-card:hover {
+    animation: shake-from-center 0.7s ease-in-out infinite;
+}
+
+    .monster-card-heading-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-radius: 10px 10px 0 0;
+        padding: 10px;
+        
             button {
                 background: none;
                 border: none;
                 padding-left: 10px;
+                transition: color 0.3s;
             }
-
             button:hover {
                 color: white;
             }
+    }
 
-            img {
-                width: 20px;
-            }
 
-            h3 {
-                color: #370A06;
-            }
-        }
+    img {
+        width: 20px;
+    }
 
-        p {
-            /* min-width: 200px; */
-            background-color: white;
-            line-height: 2;
-            padding-right: 10px;
-            padding-left: 10px;
+    h3 {
+        color: #370A06;
+    }
 
-            &:last-child {
-                border-radius: 0 0 10px 10px;
-            }
+    p {
+        background-color: white;
+        line-height: 2;
+        padding-right: 10px;
+        padding-left: 10px;
+
+        &:last-child {
+            border-radius: 0 0 10px 10px;
         }
     }
+
+    /* Keyframes för animationen för monsterkorten */
+@keyframes shake-from-center {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-0.7px, 0.7px); }
+    40% { transform: translate(0.7px, -0.7px); }
+    60% { transform: translate(-0.7px, -0.7px); }
+    80% { transform: translate(0.7px, 0.7px); }
+    100% { transform: translate(0, 0); }
 }
 
 .monster-card {
