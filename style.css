@@ -69,7 +69,7 @@ body {
 button {
     cursor: pointer;
     transition: background-color 0.3s;
-    }
+}
 
 /*
 ==================================================================================
@@ -152,7 +152,7 @@ main {
         display: block;
         border: var(--border);
     }
-    
+
     .dropdown-content button:hover {
         background-color: var(--lightpink);
     }
@@ -256,52 +256,70 @@ Monster cards
     animation: shake-from-center 0.7s ease-in-out infinite;
 }
 
-    .monster-card-heading-wrapper {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        border-radius: 10px 10px 0 0;
-        padding: 10px;
-        
-            button {
-                background: none;
-                border: none;
-                padding-left: 10px;
-                transition: color 0.3s;
-            }
-            button:hover {
-                color: white;
-            }
-    }
+.monster-card-heading-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
 
-
-    img {
-        width: 20px;
-    }
-
-    h3 {
-        color: #370A06;
-    }
-
-    p {
-        background-color: white;
-        line-height: 2;
-        padding-right: 10px;
+    button {
+        background: none;
+        border: none;
         padding-left: 10px;
-
-        &:last-child {
-            border-radius: 0 0 10px 10px;
-        }
+        transition: color 0.3s;
     }
 
-    /* Keyframes för animationen för monsterkorten */
+    button:hover {
+        color: white;
+    }
+}
+
+
+img {
+    width: 20px;
+}
+
+h3 {
+    color: #370A06;
+}
+
+p {
+    background-color: white;
+    line-height: 2;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    &:last-child {
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+/* Keyframes för animationen för monsterkorten */
 @keyframes shake-from-center {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-0.7px, 0.7px); }
-    40% { transform: translate(0.7px, -0.7px); }
-    60% { transform: translate(-0.7px, -0.7px); }
-    80% { transform: translate(0.7px, 0.7px); }
-    100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-0.7px, 0.7px);
+    }
+
+    40% {
+        transform: translate(0.7px, -0.7px);
+    }
+
+    60% {
+        transform: translate(-0.7px, -0.7px);
+    }
+
+    80% {
+        transform: translate(0.7px, 0.7px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 .monster-card {
@@ -532,7 +550,7 @@ Media query (mobile version)
         }
     }
 
-    
+
     aside {
         border: none;
     }
