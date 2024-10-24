@@ -68,6 +68,7 @@ body {
 
 button {
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 /*
@@ -103,6 +104,7 @@ main {
     border-left: var(--border);
     gap: 10px;
     align-content: flex-start;
+    position: relative;
 
     /* Css för dropdown ===Mats och Sylwia=== */
     .navbar {
@@ -150,7 +152,7 @@ main {
         display: block;
         border: var(--border);
     }
-    
+
     .dropdown-content button:hover {
         background-color: var(--lightpink);
     }
@@ -171,14 +173,54 @@ Edit popup
 */
 
 #edit-popup-window {
-    background-color: #FF85BA;
-    width: 400px;
-    height: 300px;
-    z-index: 1000;
-    position: fixed;
+    width: 0;
+    height: 0;
+    position: absolute;
     left: 50%;
-    justify-self: center;
-    align-self: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: block;
+}
+
+.popup-wrapper {
+    width: 300px;
+    padding: 20px;
+    background-color: var(--lightpink);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--darkest);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.popup-wrapper label {
+    font-weight: bold;
+}
+
+.popup-wrapper input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--darkest);
+    margin: 5px 0;
+}
+
+.popup-wrapper button {
+    display: block;
+    background-color: var(--medium);
+    color: var(--lightest);
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.popup-wrapper button:hover {
+    background-color: var(--red);
 }
 
 /*
@@ -197,51 +239,86 @@ Monster cards
     overflow-y: auto;
     overflow-x: hidden;
     align-content: flex-start;
+}
 
-    .monster-card {
-        border-radius: 10px;
-        min-width: 18%;
-        height: fit-content;
-        /* text-indent: 10px; */
+.monster-card:hover {
+    animation: shake-from-center 0.5s infinite;
+}
 
-        .monster-card-heading-wrapper {
-            display: flex;
-            width: 100%;
-            /* background-color: blue; */
-            justify-content: space-between;
-            border-radius: 10px 10px 0 0;
-            padding: 10px;
+.monster-card {
+    border-radius: 10px;
+    min-width: 18%;
+    height: fit-content;
+    transition: transform 0.3s ease-in-out;
+}
 
-            button {
-                background: none;
-                border: none;
-                padding-left: 10px;
-            }
+.monster-card:hover {
+    animation: shake-from-center 0.7s ease-in-out infinite;
+}
 
-            button:hover {
-                color: white;
-            }
+.monster-card-heading-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
 
-            img {
-                width: 20px;
-            }
+    button {
+        background: none;
+        border: none;
+        padding-left: 10px;
+        transition: color 0.3s;
+    }
 
-            h3 {
-                color: #370A06;
-            }
-        }
+    button:hover {
+        color: white;
+    }
+}
 
-        p {
-            /* min-width: 200px; */
-            background-color: white;
-            line-height: 2;
-            padding-right: 10px;
-            padding-left: 10px;
 
-            &:last-child {
-                border-radius: 0 0 10px 10px;
-            }
-        }
+img {
+    width: 20px;
+}
+
+h3 {
+    color: #370A06;
+}
+
+p {
+    background-color: white;
+    line-height: 2;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    &:last-child {
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+/* Keyframes för animationen för monsterkorten */
+@keyframes shake-from-center {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-0.7px, 0.7px);
+    }
+
+    40% {
+        transform: translate(0.7px, -0.7px);
+    }
+
+    60% {
+        transform: translate(-0.7px, -0.7px);
+    }
+
+    80% {
+        transform: translate(0.7px, 0.7px);
+    }
+
+    100% {
+        transform: translate(0, 0);
     }
 }
 
@@ -266,7 +343,6 @@ Monster cards
         background-color: var(--yellow);
     }
 }
-
 
 /*
 ==================================================================================
@@ -474,29 +550,8 @@ Media query (mobile version)
         }
     }
 
-    
+
     aside {
         border: none;
     }
-}
-
-/*
-==================================================================================
-Edit popup
-==================================================================================
-*/
-
-.popup-wrapper {
-    width: 200px;
-    height: 150px;
-    background-color: #66b77d;
-    display: block;
-}
-
-
-#edit-popup-window {
-    width: 300px;
-    height: 150px;
-    background-color: #FF85BA;
-    margin-top: 0;
 }
